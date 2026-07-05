@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Nenalezeno{% endblock %}
+{% block content %}
+<div class="empty-state" style="padding-block:7rem 9rem">
+  <p class="eyebrow">404</p>
+  <h2 style="margin-top:0.5rem">Stránka nenalezena</h2>
+  <p>Tudy cesta nevede.</p>
+  <a class="btn btn-ghost" href="{{ url_for('feed') }}" style="margin-top:1.5rem">Zpět na blog →</a>
+</div>
+{% endblock %}

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Studio GH — Skin Balance Method</title>
+    <meta
+      name="description"
+      content="Skin Balance Method — autorská metoda péče o pleť. Diagnostika, stabilizace, regenerace a cílená stimulace. Akné v dospělosti, rosacea, citlivá pleť. Studio GH, Šanov u Znojma."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Reálné fotky se chovají stejně jako původní .ph placeholdery */
+      .photo-frame {
+        width: 100%;
+        overflow: hidden;
+        background: #ece2d6;
+      }
+      .photo-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .photo-frame.rounded { border-radius: 1rem; }
+      /* poměry stran napodobující původní .ph-portrait / .ph-tall */
+      .photo-frame.portrait { aspect-ratio: 4 / 5; }
+      .photo-frame.tall { aspect-ratio: 3 / 4; }
+
+      /* ── Reference / hvězdičky ────────────────────────── */
+      .tst-stars {
+        color: #D7B387;
+        letter-spacing: 0.15em;
+        font-size: 0.95rem;
+        margin-bottom: 0.85rem;
+      }
+      .tst-source {
+        display: block;
+        margin-top: 0.35rem;
+        font-size: 0.7rem;
+        letter-spacing: 0.06em;
+        color: #9a8f84;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ════════════════════════════════ HEADER -->
+    <header class="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo" aria-label="Studio GH"
+          >Studio<span class="text-accent"> GH</span></a
+        >
+        <nav class="nav-desktop">
+          <a class="nav-link link-underline" data-nav="skin-balance-method.html" href="skin-balance-method.html">Skin Balance Method</a>
+          <a class="nav-link link-underline" data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
+          <a class="nav-link link-underline" data-nav="o-mne.html" href="o-mne.html">O mně</a>
+          <a class="nav-link link-underline" data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a class="nav-cta" href="rezervace.html">Rezervace</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <nav>
+          <a data-nav="skin-balance-method.html" href="skin-balance-method.html">Skin Balance Method</a>
+          <a data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
+          <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
+          <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a class="btn" href="rezervace.html">Rezervace <span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ═══════════════ SEKCE 1 — HOOK -->
+      <section class="container hero">
+        <div class="grid grid-2">
+          <div>
+            <p class="eyebrow fade-in" style="animation-delay: 0ms">Skin Balance Method</p>
+            <h1>
+              <span class="fade-up" style="animation-delay: 120ms">Vaše pleť nepotřebuje</span>
+              <span class="fade-up" style="animation-delay: 240ms">další relaxační rituál.</span>
+            </h1>
+            <p class="hero-sub fade-up" style="animation-delay: 380ms">Ani další sérum.</p>
+            <p class="hero-emph fade-up" style="animation-delay: 460ms">Potřebuje systém a plán.</p>
+            <p class="hero-body lead fade-up" style="animation-delay: 600ms">
+              Proto pracuji s vlastní autorskou metodou — Skin Balance Method.
+            </p>
+            <div class="hero-cta fade-up" style="animation-delay: 740ms">
+              <a class="btn" href="rezervace.html">Rezervovat konzultaci <span aria-hidden="true">→</span></a>
+            </div>
+          </div>
+          <div class="fade-up" style="animation-delay: 300ms">
+            <div class="photo-frame portrait rounded">
+              <img src="static/index/photo1.jpeg" alt="Gabriela Hřibová — Studio GH" loading="eager" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 2 — PRO KOHO -->
+      <section class="border-t bg-paper">
+        <div class="container section">
+          <div class="grid col-12">
+            <div class="span-4">
+              <div class="reveal">
+                <p class="eyebrow">Pro koho</p>
+                <h2 class="h2">Kosmetika vycházející ze skutečných potřeb vaší pleti</h2>
+              </div>
+            </div>
+            <div class="span-7-6 col-center stack">
+              <p class="reveal lead">
+                Místo pro ženy, které hledají víc než klasickou kosmetiku. Ne jen vyčistit, dát masku
+                a na chvíli si odpočinout. Ale pochopit, co se pod povrchem děje.
+              </p>
+              <p class="reveal lead" data-delay="100">
+                Chtějí, aby jejich péče dávala smysl. Hledají systém, který bude fungovat nejen dnes,
+                ale i za deset let.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 3 — PROČ PRACUJI JINAK -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="reveal span-5">
+            <div class="photo-frame tall rounded">
+              <img src="static/index/photo4.jpeg" alt="Detail péče — Studio GH" loading="lazy" />
+            </div>
+          </div>
+          <div class="span-6-7 col-center">
+            <p class="eyebrow reveal">Proč pracuji jinak</p>
+            <h2 class="h2 reveal" data-delay="80">Pleť je živý biologický systém</h2>
+            <p class="lead mt-6 reveal" data-delay="160">
+              Pokud je oslabená, podrážděná, chronicky zanícená nebo má narušenou kožní bariéru,
+              nebude dobře reagovat ani na kvalitní kosmetiku, ani na silné stimulační procedury.
+            </p>
+            <p class="lead mt-6 reveal" data-delay="240">
+              Mnoho pletí je dnes přetížených a přestimulovaných. Příliš mnoho aktivních látek,
+              střídání procedur, snaha řešit problémy rychlými zásahy. Výsledkem ale často není
+              zlepšení, ale chvilkový efekt, nepřirozený vzhled pleti a předčasné stárnutí.
+            </p>
+            <p class="closing reveal" data-delay="400">Proto pracuji jinak.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 4 — SKIN BALANCE METHOD (4 KROKY) -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="method-top">
+            <div class="reveal span-4">
+              <!-- SBM kruh se 4 body -->
+              <svg class="sbm-ring" viewBox="0 0 200 200" role="img" aria-label="Skin Balance Method — cyklus čtyř kroků">
+                <circle cx="100" cy="100" r="86" fill="none" stroke="#E8DAC8" stroke-width="1" />
+                <circle cx="100" cy="100" r="58" fill="none" stroke="#E8DAC8" stroke-width="1" stroke-dasharray="2 6" />
+                <g><circle cx="100" cy="14" r="13" fill="#D7B387" /><text x="100" y="18" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#544A4A">1</text></g>
+                <g><circle cx="186" cy="100" r="13" fill="#D7B387" /><text x="186" y="104" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#544A4A">2</text></g>
+                <g><circle cx="100" cy="186" r="13" fill="#D7B387" /><text x="100" y="190" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#544A4A">3</text></g>
+                <g><circle cx="14" cy="100" r="13" fill="#D7B387" /><text x="14" y="104" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#544A4A">4</text></g>
+                <circle cx="100" cy="100" r="4" fill="#544A4A" />
+              </svg>
+            </div>
+            <div class="span-6-7">
+              <div class="reveal">
+                <p class="eyebrow">Autorská metoda</p>
+                <h2 class="h2">Skin Balance Method</h2>
+                <p class="lead mt-6">Systém péče, který staví na čtyřech krocích.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="cell-grid cols-2">
+            <div class="cell reveal"><div class="cell-inner">
+              <span class="cell-no">1</span><h3>Diagnostika</h3>
+              <p>Nejprve pochopíme skutečný stav vaší pleti. Bez diagnostiky nelze péči správně nastavit.</p>
+            </div></div>
+            <div class="cell reveal" data-delay="80"><div class="cell-inner">
+              <span class="cell-no">2</span><h3>Stabilizace</h3>
+              <p>Obnova kožní bariéry, zklidnění zánětu, vytvoření podmínek, ve kterých pleť může reagovat na další péči.</p>
+            </div></div>
+            <div class="cell reveal" data-delay="160"><div class="cell-inner">
+              <span class="cell-no">3</span><h3>Regenerace</h3>
+              <p>Hluboká změna prostředí pleti. Obnova a oprava buněk, aby byly schopné dalších kroků. Regenerace pracuje přes informaci předanou přímo buňkám — ne přes podráždění povrchu.</p>
+            </div></div>
+            <div class="cell reveal" data-delay="240"><div class="cell-inner">
+              <span class="cell-no">4</span><h3>Cílená stimulace</h3>
+              <p>Teprve regenerovaná pleť se nechá efektivně stimulovat. Stimulace na připravené pleti přináší skutečný, dlouhodobý výsledek — ne jen krátkodobý efekt.</p>
+            </div></div>
+          </div>
+
+          <div class="method-cta reveal" data-delay="160">
+            <a class="link-underline nav-link" href="skin-balance-method.html" style="color: var(--ink)">Více o Skin Balance Method →</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 5 — CO ŘEŠÍM (5 KARET) -->
+      <section class="container section">
+        <div class="reveal">
+          <p class="eyebrow">Specializuji se na</p>
+          <h2 class="h2 maxw-2xl">Co řeším</h2>
+        </div>
+        <div class="spec-grid">
+          <!-- Kostky zatím nevedou nikam (podstránky stavů pleti zatím neexistují),
+               připraveno na pozdější propojení — stačí obalit do <a href="..."> -->
+          <div class="cell reveal"><div class="cell-inner">
+            <h3>Akné v dospělosti</h3><p>Pleť, kterou nelze řešit stejně jako akné teenagerů.</p>
+          </div></div>
+          <div class="cell reveal" data-delay="70"><div class="cell-inner">
+            <h3>Rosacea a reaktivní pleť</h3><p>Stavy, kde silné zásahy škodí víc, než pomáhají.</p>
+          </div></div>
+          <div class="cell reveal" data-delay="140"><div class="cell-inner">
+            <h3>Periorální dermatitida</h3><p>Často důsledek přetížené péče. Vyžaduje opačný směr — ne víc, ale méně.</p>
+          </div></div>
+          <div class="cell reveal" data-delay="210"><div class="cell-inner">
+            <h3>Zdravé stárnutí</h3><p>Ne boj proti vráskám, ale podpora pleti v procesu, kterým prochází.</p>
+          </div></div>
+          <div class="cell reveal" data-delay="280"><div class="cell-inner">
+            <h3>Citlivá a oslabená pleť</h3><p>Obnova bariéry jako základ všeho ostatního.</p>
+          </div></div>
+          <div class="reveal" data-delay="350">
+            <p class="spec-note">Stavy, kde je potřeba respekt, citlivost a porozumění pleti.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 6 — JAK VYPADÁ SPOLUPRÁCE -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="reveal">
+            <p class="eyebrow">Krok za krokem</p>
+            <h2 class="h2">Jak vypadá spolupráce</h2>
+          </div>
+          <div class="process-grid">
+            <div class="step reveal">
+              <div class="step-head"><span class="step-num">1</span><span class="step-line"></span></div>
+              <h3>Diagnostická konzultace</h3>
+              <p>Nezačínáme procedurou. Začínáme tím, že pochopíme, v jakém stavu vaše pleť je.</p>
+            </div>
+            <div class="step reveal" data-delay="100">
+              <div class="step-head"><span class="step-num">2</span><span class="step-line"></span></div>
+              <h3>Návrh péče</h3>
+              <p>Doporučím vám, co má pro vaši pleť smysl — a vysvětlím proč. Nepracuji jako dráb, ale jako poradce. Rozhodnutí, jestli a jak budeme pokračovat, je vždy na vás.</p>
+            </div>
+            <div class="step reveal" data-delay="200">
+              <div class="step-head"><span class="step-num">3</span><span class="step-line"></span></div>
+              <h3>Dlouhodobé vedení</h3>
+              <p>Péče není jedna návštěva. Je to proces, ve kterém vás vedu krok po kroku.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 7 — KDO JSEM -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="reveal span-5">
+            <div class="photo-frame portrait">
+              <img src="static/index/photo2.jpeg" alt="Gabriela Hřibová — skin specialistka" loading="lazy" />
+            </div>
+          </div>
+          <div class="span-6-7">
+            <div class="reveal">
+              <p class="eyebrow">Kdo jsem</p>
+              <h2 class="h2">Gabriela Hřibová</h2>
+            </div>
+            <p class="lead mt-6 reveal" data-delay="120">
+              Skin specialistka s více než 15 lety praxe. Vzdělávám se u italských a korejských
+              odborníků na biocelulární kosmetiku. Pracuji se značkami Natinuel, DIBI Milano
+              a Thessera. Jsem ambasadorka a trenérka DIBI Milano pro ČR.
+            </p>
+            <p class="lead mt-6 reveal" data-delay="200">
+              V roce 2025 jsem získala ocenění od Skin Institutu a Natinuelu za přínos oboru
+              a sdílení znalostí.
+            </p>
+            <div class="mt-8 reveal" data-delay="320">
+              <a class="link-underline nav-link" href="o-mne.html" style="color: var(--ink)">Více o mně →</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 8 — CO ŘÍKAJÍ KLIENTKY -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="reveal">
+            <p class="eyebrow">Reference · hodnocení 5,0 na Google</p>
+            <h2 class="h2">Co říkají klientky</h2>
+          </div>
+          <div class="tst-grid">
+            <figure class="tst reveal">
+              <div class="tst-stars" aria-label="5 z 5 hvězd">★★★★★</div>
+              <blockquote>„Vyzkoušela jsem hodně kosmetiček, ale Gábi je Bohyně! Doporučí péči na míru a všechno, co vám dělá, dává smysl. Děkuju, že jsi žena na svém místě.”</blockquote>
+              <figcaption class="eyebrow">— Mirka Hunová<span class="tst-source">Google recenze</span></figcaption>
+            </figure>
+            <figure class="tst reveal" data-delay="90">
+              <div class="tst-stars" aria-label="5 z 5 hvězd">★★★★★</div>
+              <blockquote>„Chodím už 3. rokem. Je velmi profesionální, milá, pomohla mi s akné, které mě začalo trápit, a vždy dostanu ošetření, jaké moje pleť zrovna potřebuje. Vždy odcházím zrelaxovaná a těším se na další návštěvu.”</blockquote>
+              <figcaption class="eyebrow">— Lucie Kopecká<span class="tst-source">Google recenze</span></figcaption>
+            </figure>
+            <figure class="tst reveal" data-delay="180">
+              <div class="tst-stars" aria-label="5 z 5 hvězd">★★★★★</div>
+              <blockquote>„Maximálně spokojený zákazník. Paní Gábina je profesionál, pružně reaguje na aktuální potřebu pleti, vysvětlí, poradí, ale nic nenutí. Odcházím vždy zrelaxovaná a těším se na příště. Vřele doporučuji.”</blockquote>
+              <figcaption class="eyebrow">— Maciny Sobotková<span class="tst-source">Google recenze</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 9 — LEAD MAGNET -->
+      <section class="container section">
+        <div class="lead-box">
+          <div class="lead-inner">
+            <div class="reveal">
+              <p class="eyebrow">Zdarma ke stažení</p>
+              <h2 class="h2" style="font-size: clamp(1.875rem, 4vw, 2.25rem)">Nejste si jistá, jestli je tohle pro vás?</h2>
+              <p class="lead mt-6" style="max-width: 28rem; font-size: 1rem">
+                Stáhněte si e-book „Naučte se číst ve své pleti“. 16 stran, zdarma. Žádné prodejní
+                triky — jen vysvětlení toho, co se na vaší pleti děje a podle čeho poznat, co opravdu
+                potřebuje.
+              </p>
+            </div>
+            <!-- Formulář — placeholder. Napoj na Mailerlite / Webnode dle dohody s Gabrielou. -->
+            <form class="form-grid reveal" data-delay="120" action="#" method="post">
+              <input class="field" name="name" placeholder="Jméno" />
+              <input class="field" name="email" type="email" placeholder="E-mail" />
+              <button class="btn" type="submit" style="margin-top: 0.25rem">Stáhnout e-book <span aria-hidden="true">→</span></button>
+              <p class="fineprint">
+                Po vyplnění vám přijde e-mail s odkazem na PDF. Odesláním souhlasíte se zpracováním
+                osobních údajů.
+              </p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 10 — ZÁVĚREČNÉ CTA -->
+      <section class="container final">
+        <h2 class="reveal">Pokud chcete vědět, co vaše pleť opravdu potřebuje, začneme diagnostikou.</h2>
+        <div class="reveal" data-delay="120" style="margin-top: 2.25rem">
+          <a class="btn" href="rezervace.html">Rezervovat konzultaci <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <!-- ════════════════════════════════ FOOTER -->
+    <footer class="footer">
+      <div class="container" style="padding-block: 5rem">
+        <div class="footer-cta">
+          <p class="eyebrow footer-muted">Rezervace</p>
+          <h2>Začněme<br />diagnostikou.</h2>
+          <a class="btn btn-ghost" href="rezervace.html" style="margin-top: 2.25rem">Rezervovat konzultaci <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-col-2">
+            <p class="footer-brand">Studio<span class="text-accent"> GH</span></p>
+            <p class="footer-muted" style="margin-top: 1rem; max-width: 20rem; font-size: 0.875rem; line-height: 1.7">
+              Gabriela Hřibová — skin specialistka. Skin Balance Method.
+            </p>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Navigace</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="skin-balance-method.html">Skin Balance Method</a></li>
+              <li><a class="footer-link link-underline" href="procedury-cenik.html">Procedury &amp; ceník</a></li>
+              <li><a class="footer-link link-underline" href="o-mne.html">O mně</a></li>
+              <li><a class="footer-link link-underline" href="pro-klientky.html">Pro klientky</a></li>
+              <li><a class="footer-link link-underline" href="rezervace.html">Rezervace</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Kontakt</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="tel:605134301">605 134 301</a></li>
+              <li><a class="footer-link link-underline" href="#">Messenger</a></li>
+              <li class="footer-muted" style="font-size: 0.875rem">Studio GH, Šanov u Znojma</li>
+              <!-- E-mail: [doplnit] — Otevírací doba: [doplnit] -->
+            </ul>
+            <div class="footer-social">
+              <a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram</a>
+              <a class="link-underline" href="#" target="_blank" rel="noreferrer">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© <span data-year>2026</span> Studio GH. Všechna práva vyhrazena.</p>
+          <div class="footer-legal">
+            <a class="link-underline" href="obchodni-podminky.html">Obchodní podmínky</a>
+            <a class="link-underline" href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>

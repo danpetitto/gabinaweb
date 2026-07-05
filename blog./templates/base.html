@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Blog{% endblock %} — Studio GH</title>
+    <meta name="description" content="{% block description %}Blog Studia GH — péče o pleť, Skin Balance Method.{% endblock %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/blog.css') }}" />
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="{{ url_for('feed') }}" class="logo" aria-label="Studio GH">Studio<span class="text-accent"> GH</span></a>
+        <nav class="nav-desktop">
+          <a class="nav-link" href="#">Skin Balance Method</a>
+          <a class="nav-link" href="#">Procedury &amp; ceník</a>
+          <a class="nav-link" href="#">O mně</a>
+          <a class="nav-link active" href="{{ url_for('feed') }}">Blog</a>
+          <a class="nav-cta" href="#">Rezervace</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="container" style="padding-top:1.5rem">
+            {% for category, msg in messages %}
+              <div class="flash flash-{{ 'error' if category == 'error' else 'ok' }}">{{ msg }}</div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+      {% block content %}{% endblock %}
+    </main>
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col-2">
+            <p class="footer-brand">Studio<span class="text-accent"> GH</span></p>
+            <p class="footer-muted" style="margin-top:1rem;max-width:20rem;font-size:0.875rem;line-height:1.7">
+              Gabriela Hřibová — skin specialistka. Skin Balance Method.
+            </p>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Navigace</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="{{ url_for('feed') }}">Blog</a></li>
+              <li><a class="footer-link link-underline" href="#">O mně</a></li>
+              <li><a class="footer-link link-underline" href="#">Rezervace</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Kontakt</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="tel:605134301">605 134 301</a></li>
+              <li class="footer-muted" style="font-size:0.875rem">Studio GH, Šanov u Znojma</li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© {{ current_year }} Studio GH. Všechna práva vyhrazena.</p>
+          <div class="footer-legal"><a class="link-underline" href="{{ url_for('admin') }}">Admin</a></div>
+        </div>
+      </div>
+    </footer>
+    {% block scripts %}{% endblock %}
+  </body>
+</html>

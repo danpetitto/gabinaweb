@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}{{ a['title'] }}{% endblock %}
+{% block description %}{{ a['excerpt'] }}{% endblock %}
+
+{% block content %}
+<article class="container">
+  <div class="article-wrap">
+    <a class="back-link" href="{{ url_for('feed') }}">← Zpět na blog</a>
+    {% if a['cover'] %}
+      <img class="article-cover" src="{{ url_for('static', filename='uploads/' ~ a['cover']) }}" alt="{{ a['title'] }}" />
+    {% endif %}
+    <p class="eyebrow">Magazín</p>
+    <h1 style="margin-block:0.75rem 1rem">{{ a['title'] }}</h1>
+    <div class="article-meta">
+      <span class="card-date">{{ a['created_at'][:10] }}</span>
+    </div>
+    <div class="article-body">{{ a['body'] | safe }}</div>
+  </div>
+</article>
+{% endblock %}

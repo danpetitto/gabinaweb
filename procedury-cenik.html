@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="cs">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Procedury & ceník — Studio GH</title>
+    <meta name="description" content="Úvodní diagnostika, stabilizace, regenerace a biostimulace. DIBI Milano, Natinuel, Thessera v synergii. Kompletní ceník Studia GH." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Reálné fotky se chovají stejně jako původní .ph placeholdery */
+      .photo-frame {
+        width: 100%;
+        overflow: hidden;
+        background: #ece2d6;
+      }
+      .photo-frame img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .photo-frame.rounded { border-radius: 1rem; }
+      .photo-frame.portrait { aspect-ratio: 4 / 5; }
+      .photo-frame.tall { aspect-ratio: 3 / 4; }
+
+      /* ── Čitelnější ceník ─────────────────────────────── */
+      .price-list {
+        margin-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2.5rem;
+      }
+      .price-row {
+        padding-bottom: 2.5rem;
+        border-bottom: 1px solid #E8DAC8;
+      }
+      .price-row:last-child {
+        padding-bottom: 0;
+        border-bottom: none;
+      }
+      /* Hlavička: nadpis vlevo, cena vpravo, s mezerou a zarovnáním na linku */
+      .price-head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 0.5rem 1.5rem;
+      }
+      .price-head h3 {
+        margin: 0;
+        flex: 1 1 60%;
+      }
+      .price-meta {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        white-space: nowrap;
+      }
+      .price-amount {
+        font-family: "Playfair Display", Georgia, serif;
+        font-size: 1.25rem;
+        color: var(--ink, #544A4A);
+        line-height: 1.2;
+      }
+      .price-time {
+        font-size: 0.8125rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #9a8f84;
+        margin-top: 0.25rem;
+      }
+      .price-sub {
+        margin: 0.75rem 0 0;
+        font-size: 0.9375rem;
+        color: #8a7f74;
+        font-style: italic;
+      }
+      .price-desc {
+        margin: 1rem 0 1.25rem;
+        line-height: 1.75;
+        max-width: 46rem;
+      }
+      @media (max-width: 640px) {
+        .price-head { flex-direction: column; align-items: flex-start; }
+        .price-meta { align-items: flex-start; text-align: left; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header-inner">
+        <a href="index.html" class="logo" aria-label="Studio GH"
+          >Studio<span class="text-accent"> GH</span></a
+        >
+        <nav class="nav-desktop">
+          <a class="nav-link link-underline" data-nav="skin-balance-method.html" href="skin-balance-method.html">Skin Balance Method</a>
+          <a class="nav-link link-underline" data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
+          <a class="nav-link link-underline" data-nav="o-mne.html" href="o-mne.html">O mně</a>
+          <a class="nav-link link-underline" data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a class="nav-cta" href="rezervace.html">Rezervace</a>
+        </nav>
+        <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
+          <span></span><span></span>
+        </button>
+      </div>
+      <div class="nav-mobile">
+        <nav>
+          <a data-nav="skin-balance-method.html" href="skin-balance-method.html">Skin Balance Method</a>
+          <a data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
+          <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
+          <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a class="btn" href="rezervace.html">Rezervace <span aria-hidden="true">→</span></a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- ═══════════════ HERO -->
+      <section class="container page-hero">
+        <div class="reveal"><p class="eyebrow">Nabídka</p></div>
+        <h1 class="reveal" data-delay="80">Procedury &amp; ceník</h1>
+        <p class="lead reveal" data-delay="160">U mě si ošetření nevybíráte jako z jídelního lístku. O pořadí rozhoduji já — z toho, co ukáže diagnostika. Vy si vybíráte, že chcete začít.</p>
+      </section>
+
+      <!-- ═══════════════ ÚVOD KE ZNAČKÁM -->
+      <section class="container section" style="padding-top:0">
+        <div class="grid col-12">
+          <div class="span-4">
+            <div class="reveal">
+              <p class="eyebrow">Tři značky v synergii</p>
+              <h2 class="h2">Co funguje na jednu pleť, druhou zatíží</h2>
+            </div>
+          </div>
+          <div class="span-7-6 col-center stack">
+            <p class="reveal lead">
+              Pracuji se třemi značkami — DIBI Milano, Natinuel a Thessera. Doplňují se a používám je
+              v synergii, protože nevěřím, že jedna značka vyhovuje všem.
+            </p>
+            <p class="reveal lead" data-delay="100">
+              Sázím na nejmodernější účinné látky — exozomy, biomimetické peptidy, PDRN. Ne kvůli
+              trendu. Kvůli tomu, co dokážou s pletí.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ CENÍK -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="reveal">
+            <p class="eyebrow">Ceník</p>
+            <h2 class="h2">Ošetření podle fáze, ne podle nálady</h2>
+          </div>
+
+          <div class="price-list">
+            <!-- 1 -->
+            <article class="price-row reveal">
+              <div class="price-head">
+                <h3>Úvodní ošetření s diagnostikou</h3>
+                <div class="price-meta"><span class="price-amount">1 750 Kč</span><span class="price-time">90 minut</span></div>
+              </div>
+              <p class="price-sub">Pro nové klientky. Zklidnění, obnova, posílení.</p>
+              <p class="price-desc">
+                Nejsem kosmetička, která vám udělá ošetření a pošle vás domů. Začínáme diagnostikou.
+                Změřím hydrataci a promaštění, pod Woodovou lampou se podívám pod povrch a přečtu typ
+                i aktuální stav vaší pleti. Řeknu vám, co se na ní děje a proč — ne odhadem, ale z toho,
+                co vidím. Neodejdete jen s ošetřením. Odejdete s plánem.
+              </p>
+              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Objednat →</a>
+            </article>
+
+            <!-- 2 -->
+            <article class="price-row reveal" data-delay="80">
+              <div class="price-head">
+                <h3>Stabilizační ošetření</h3>
+                <div class="price-meta"><span class="price-amount">1 570–2 900 Kč</span></div>
+              </div>
+              <p class="price-sub">Zklidnění, obnova, posílení.</p>
+              <p class="price-desc">
+                Pleť, která je pořád podrážděná. Pálí, táhne, zčervená skoro z ničeho. Akné, které se
+                vrací. Rosacea, dermatitida, dehydratace, která nejde zalít sebevětší dávkou krému.
+                Tahle pleť nepotřebuje silnější aktivní látky. Potřebuje klid a pevnou bariéru.
+                Pracuji s ošetřením Defence a Pro Cellular od DIBI Milano a se stabilizačními protokoly
+                Natinuel, vždy podle toho, co vaše pleť snese. Pokud vám stabilní, klidná pleť stačí,
+                je to v pořádku. Není to mezistanice. Pro spoustu žen je to cíl.
+              </p>
+              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
+            </article>
+
+            <!-- 3 -->
+            <article class="price-row reveal" data-delay="160">
+              <div class="price-head">
+                <h3>Regenerace</h3>
+                <div class="price-meta"><span class="price-amount">1 750 Kč</span></div>
+              </div>
+              <p class="price-sub">Příprava vnitřního prostředí pleti.</p>
+              <p class="price-desc">
+                Pleť je klidná, ale unavená. Vrací se pomalu, ztrácí svěžest, působí vyčerpaně. Cítíte,
+                že má na víc — jen jí chybí síla se nastartovat. Regenerace upraví vnitřní prostředí
+                pleti, podpoří tvorbu nových buněk a probudí buněčnou aktivitu. Pracuji s Rx Carboxy
+                a séry — samostatně nebo s hloubkovou stimulací pleti, s ošetřením RX50 a jemným
+                vstupem exozomů ExoHyal. Pleť tím dostává z čeho stavět.
+              </p>
+              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
+            </article>
+
+            <!-- 4 -->
+            <article class="price-row reveal" data-delay="240">
+              <div class="price-head">
+                <h3>Biostimulace</h3>
+                <div class="price-meta"><span class="price-amount">2 400–2 600 Kč</span><span class="price-time">90 minut</span></div>
+              </div>
+              <p class="price-sub">Aktivní obnova připravené pleti.</p>
+              <p class="price-desc">
+                Pleť ztrácí pevnost. Kontury se mění, kolagen ubývá, přibývají pigmentace. Cítíte, že
+                běžná péče už nestačí. Máte pravdu — nestačí. Biostimulace probouzí to, co pleť časem
+                ztrácí: schopnost obnovovat se zevnitř. Podporuje tvorbu kolagenu, pevnost, hustotu.
+                Pracuji s Rx Carboxy a séry — samostatně nebo s hloubkovou stimulací pleti, s párem
+                Bio-Mec a Bio-Oxy a s ošetřeními Thessera. Žádný zázrak na týden. Postupná, viditelná
+                proměna.
+              </p>
+              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ PRVNÍ NÁVŠTĚVA -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="reveal span-5">
+            <div class="photo-frame tall rounded">
+              <img src="static/index/photo7.jpeg" alt="Diagnostika pleti — Studio GH" loading="lazy" />
+            </div>
+          </div>
+          <div class="span-6-7 col-center">
+            <p class="eyebrow reveal">Jak probíhá první návštěva</p>
+            <h2 class="h2 reveal" data-delay="80">Vždy začínáme konzultací a diagnostikou</h2>
+            <p class="lead mt-6 reveal" data-delay="160">
+              Zajímá mě všechno, co má na stav vaší pleti vliv — zdravotní stav, životní styl i to,
+              jak o ni pečujete. Analyzérem změřím hloubkovou hydrataci a promaštění, pod Woodovou
+              lampou posoudím stav bariéry, pigmentace a hlubších vrstev, které pouhým okem nevidíte.
+            </p>
+            <p class="lead mt-6 reveal" data-delay="240">
+              Součástí ošetření je i úprava a barvení obočí a drobné epilace v obličeji voskem Lycon.
+              Podle potřeby pracuji s ultrazvukovou špachtlí a studenou plazmou.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ JAK PRACUJEME + OBJEDNÁNÍ -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="grid col-12">
+            <div class="span-4">
+              <div class="reveal">
+                <p class="eyebrow">Spolupráce</p>
+                <h2 class="h2">Jak společně pracujeme</h2>
+              </div>
+            </div>
+            <div class="span-7-6 col-center stack">
+              <p class="reveal lead">
+                Na začátku si řekneme, co chcete řešit, jak často chcete chodit a co je reálné.
+                Z diagnostiky pak sestavím plán — kam pleť směřujeme a jakými kroky.
+              </p>
+              <p class="reveal lead" data-delay="100">
+                Plán se přizpůsobuje. Pleť reaguje na stres, hormony, změnu prostředí. Někdy je potřeba
+                zareagovat na výkyv. To je normální — důležité je, že víme, kam jdeme. Pokud plánujete
+                estetický zákrok, dejte mi vědět včas. Připravená pleť drží výsledek výrazně líp a déle.
+              </p>
+              <p class="closing reveal" data-delay="200">
+                Rezervujte přes online systém (online objednání není možné na termíny po 15. hodině).
+                Pokud vám online termín nevyhovuje, napište na 605 134 301 nebo přes Messenger.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ ZÁVĚREČNÉ CTA -->
+      <section class="container final">
+        <h2 class="reveal">Pokud chcete vědět, co vaše pleť opravdu potřebuje, začneme diagnostikou.</h2>
+        <div class="reveal" data-delay="120" style="margin-top: 2.25rem">
+          <a class="btn" href="rezervace.html">Rezervovat konzultaci <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container" style="padding-block: 5rem">
+        <div class="footer-cta">
+          <p class="eyebrow footer-muted">Rezervace</p>
+          <h2>Začněme<br />diagnostikou.</h2>
+          <a class="btn btn-ghost" href="rezervace.html" style="margin-top: 2.25rem">Rezervovat konzultaci <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="footer-grid">
+          <div class="footer-col-2">
+            <p class="footer-brand">Studio<span class="text-accent"> GH</span></p>
+            <p class="footer-muted" style="margin-top: 1rem; max-width: 20rem; font-size: 0.875rem; line-height: 1.7">
+              Gabriela Hřibová — skin specialistka. Skin Balance Method.
+            </p>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Navigace</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="skin-balance-method.html">Skin Balance Method</a></li>
+              <li><a class="footer-link link-underline" href="procedury-cenik.html">Procedury &amp; ceník</a></li>
+              <li><a class="footer-link link-underline" href="o-mne.html">O mně</a></li>
+              <li><a class="footer-link link-underline" href="pro-klientky.html">Pro klientky</a></li>
+              <li><a class="footer-link link-underline" href="rezervace.html">Rezervace</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="eyebrow footer-muted">Kontakt</h4>
+            <ul>
+              <li><a class="footer-link link-underline" href="tel:605134301">605 134 301</a></li>
+              <li><a class="footer-link link-underline" href="#">Messenger</a></li>
+              <li class="footer-muted" style="font-size: 0.875rem">Studio GH, Šanov u Znojma</li>
+              <!-- E-mail: [doplnit] — Otevírací doba: [doplnit] -->
+            </ul>
+            <div class="footer-social">
+              <a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram</a>
+              <a class="link-underline" href="#" target="_blank" rel="noreferrer">Facebook</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© <span data-year>2026</span> Studio GH. Všechna práva vyhrazena.</p>
+          <div class="footer-legal">
+            <a class="link-underline" href="obchodni-podminky.html">Obchodní podmínky</a>
+            <a class="link-underline" href="ochrana-osobnich-udaju.html">Ochrana osobních údajů</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Blog{% endblock %}
+
+{% block content %}
+<section class="container page-hero">
+  <p class="eyebrow">Magazín</p>
+  <h1>Blog</h1>
+  <p class="lead">Péče o pleť, rituály a vše kolem Skin Balance Method — srozumitelně a bez balastu.</p>
+</section>
+
+<section class="container">
+  {% if articles %}
+    <div class="feed-grid">
+      {% for a in articles %}
+        <a class="card" href="{{ url_for('article', slug=a['slug']) }}">
+          <div class="card-media">
+            {% if a['cover'] %}
+              <img src="{{ url_for('static', filename='uploads/' ~ a['cover']) }}" alt="{{ a['title'] }}" loading="lazy" />
+            {% else %}
+              <div class="card-media-empty">GH</div>
+            {% endif %}
+          </div>
+          <div class="card-body">
+            <span class="card-date">{{ a['created_at'][:10] }}</span>
+            <h3 class="card-title">{{ a['title'] }}</h3>
+            <p class="card-excerpt">{{ a['excerpt'] }}</p>
+            <span class="card-more">Číst dál →</span>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <h2>Zatím tu nic není</h2>
+      <p>První článek se brzy objeví.</p>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}

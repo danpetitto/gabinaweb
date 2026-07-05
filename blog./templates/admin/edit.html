@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}{{ 'Upravit článek' if a else 'Nový článek' }}{% endblock %}
+
+{% block head %}
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+<section class="container" style="padding-block:2rem 6rem">
+  <div class="admin-bar">
+    <p class="eyebrow">{{ 'Úprava článku' if a else 'Nový článek' }}</p>
+    <div class="admin-bar-links">
+      <a class="nav-link" href="{{ url_for('admin') }}">← Zpět na seznam</a>
+    </div>
+  </div>
+
+  <form method="post" enctype="multipart/form-data" id="article-form"
+        action="{{ url_for('admin_edit', aid=a['id']) if a else url_for('admin_new') }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+    <input type="hidden" name="body" id="body-input" />
+    {% if a and a['cover'] %}<input type="hidden" name="cover_existing" value="{{ a['cover'] }}" />{% endif %}
+
+    <div class="editor-grid">
+      <div>
+        <div class="field">
+          <label for="title">Titulek</label>
+          <input type="text" id="title" name="title" value="{{ a['title'] if a else '' }}" required />
+        </div>
+
+        <div class="field">
+          <label for="excerpt">Perex <span style="text-transform:none;letter-spacing:0">(nepovinné — vygeneruje se z textu)</span></label>
+          <textarea id="excerpt" name="excerpt" rows="2">{{ a['excerpt'] if a else '' }}</textarea>
+        </div>
+
+        <div class="field">
+          <label>Obsah</label>
+          <div id="editor"></div>
+        </div>
+      </div>
+
+      <aside class="editor-side">
+        <div class="field">
+          <label>Titulní fotka</label>
+          {% if a and a['cover'] %}
+            <img class="cover-preview" id="cover-preview" src="{{ url_for('static', filename='uploads/' ~ a['cover']) }}" alt="" />
+          {% else %}
+            <img class="cover-preview" id="cover-preview" style="display:none" alt="" />
+          {% endif %}
+          <input type="file" name="cover" id="cover-input" accept="image/png,image/jpeg,image/webp,image/gif" />
+        </div>
+
+        <div class="field field-inline">
+          <input type="checkbox" id="published" name="published" {{ 'checked' if a and a['published'] else '' }} />
+          <label for="published">Publikovat</label>
+        </div>
+
+        <button class="btn btn-accent" type="submit" style="width:100%;justify-content:center">
+          {{ 'Uložit změny' if a else 'Vytvořit článek' }}
+        </button>
+      </aside>
+    </div>
+  </form>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+<script>
+  const UPLOAD_URL = "{{ url_for('admin_upload') }}";
+  const CSRF = "{{ csrf_token() }}";
+  const INITIAL = {{ (a['body'] if a else '') | tojson }};
+</script>
+<script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+{% endblock %}

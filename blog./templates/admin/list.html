@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% block title %}Administrace{% endblock %}
+
+{% block content %}
+<section class="container" style="padding-block:2rem 6rem">
+  <div class="admin-bar">
+    <p class="eyebrow">Administrace blogu</p>
+    <div class="admin-bar-links">
+      <a class="nav-link active" href="{{ url_for('admin') }}">Články</a>
+      <a class="nav-link" href="{{ url_for('feed') }}" target="_blank">Zobrazit web ↗</a>
+      <form method="post" action="{{ url_for('logout') }}" style="display:inline">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+        <button class="btn btn-sm btn-ghost" type="submit">Odhlásit</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="admin-head">
+    <h1 style="font-size:2.2rem">Články</h1>
+    <a class="btn btn-accent" href="{{ url_for('admin_new') }}">+ Nový článek</a>
+  </div>
+
+  {% if articles %}
+    <table class="table">
+      <thead>
+        <tr><th>Titulek</th><th>Stav</th><th>Upraveno</th><th style="text-align:right">Akce</th></tr>
+      </thead>
+      <tbody>
+        {% for a in articles %}
+          <tr>
+            <td>{{ a['title'] }}</td>
+            <td>
+              {% if a['published'] %}<span class="badge badge-pub">Publikováno</span>
+              {% else %}<span class="badge badge-draft">Koncept</span>{% endif %}
+            </td>
+            <td>{{ a['updated_at'][:10] }}</td>
+            <td>
+              <div class="row-actions">
+                {% if a['published'] %}
+                  <a class="btn btn-sm btn-ghost" href="{{ url_for('article', slug=a['slug']) }}" target="_blank">Náhled</a>
+                {% endif %}
+                <a class="btn btn-sm btn-ghost" href="{{ url_for('admin_edit', aid=a['id']) }}">Upravit</a>
+                <form method="post" action="{{ url_for('admin_delete', aid=a['id']) }}"
+                      onsubmit="return confirm('Opravdu smazat „{{ a['title'] }}“?');" style="display:inline">
+                  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}" />
+                  <button class="btn btn-sm btn-danger" type="submit">Smazat</button>
+                </form>
+              </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <div class="empty-state">
+      <h2>Žádné články</h2>
+      <p>Začněte vytvořením prvního příspěvku.</p>
+      <a class="btn btn-accent" href="{{ url_for('admin_new') }}" style="margin-top:1.5rem">+ Nový článek</a>
+    </div>
+  {% endif %}
+</section>
+{% endblock %}
