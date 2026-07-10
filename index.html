@@ -47,6 +47,26 @@
         letter-spacing: 0.06em;
         color: #9a8f84;
       }
+
+      /* ── "Jste tu správně, pokud jste…" seznam ────────── */
+      .fit-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 1rem;
+      }
+      .fit-list li {
+        position: relative;
+        padding-left: 1.75rem;
+        line-height: 1.7;
+      }
+      .fit-list li::before {
+        content: "—";
+        position: absolute;
+        left: 0;
+        color: #D7B387;
+      }
     </style>
   </head>
   <body>
@@ -120,9 +140,16 @@
                 Místo pro ženy, které hledají víc než klasickou kosmetiku. Ne jen vyčistit, dát masku
                 a na chvíli si odpočinout. Ale pochopit, co se pod povrchem děje.
               </p>
-              <p class="reveal lead" data-delay="100">
-                Chtějí, aby jejich péče dávala smysl. Hledají systém, který bude fungovat nejen dnes,
-                ale i za deset let.
+              <p class="reveal lead" data-delay="100">Jste tu správně, pokud jste…</p>
+              <ul class="fit-list reveal" data-delay="180">
+                <li>…už vyzkoušela několik kosmetických ošetření, ale efekt vydržel jen pár dní.</li>
+                <li>…investovala do péče čas i peníze, přesto máte pocit, že vaše pleť se nikam neposouvá.</li>
+                <li>…zahlcená množstvím protichůdných rad a už vlastně nevíte, co vaše pleť skutečně potřebuje.</li>
+                <li>…přestala hledat další zázračný produkt a místo toho chcete porozumět své pleti a mít jasný plán.</li>
+              </ul>
+              <p class="reveal lead" data-delay="260">
+                Pak jste na správném místě. Pomohu vám pochopit, co vaše pleť potřebuje, proč se chová
+                právě takto a jak o ni pečovat tak, aby výsledky vydržely déle než jen pár dní.
               </p>
             </div>
           </div>
