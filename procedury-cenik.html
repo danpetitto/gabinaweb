@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Procedury & ceník — Studio GH</title>
-    <meta name="description" content="Úvodní diagnostika, stabilizace, regenerace a biostimulace. DIBI Milano, Natinuel, Thessera v synergii. Kompletní ceník Studia GH." />
+    <title>Služby a ceník — Studio GH</title>
+    <meta name="description" content="Služby, ceník a rezervace kosmetického ošetření. Seznamovací ošetření, stabilizace, regenerace, biostimulace a kúry. Natinuel, DIBI Milano, THESERA. Studio GH, Šanov u Znojma." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -26,32 +26,46 @@
       .photo-frame.portrait { aspect-ratio: 4 / 5; }
       .photo-frame.tall { aspect-ratio: 3 / 4; }
 
-      /* ── Čitelnější ceník ─────────────────────────────── */
+      /* ── Ceník: sekce + akordeonové položky ─────────────── */
+      .price-intro {
+        margin-top: 1.5rem;
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        color: var(--smoke);
+        max-width: 22rem;
+      }
       .price-list {
-        margin-top: 3rem;
+        border-top: 1px solid #e8dac8;
+      }
+      .price-item {
+        border-bottom: 1px solid #e8dac8;
+      }
+      .price-item summary {
+        list-style: none;
+        cursor: pointer;
         display: flex;
-        flex-direction: column;
-        gap: 2.5rem;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 1.75rem 0;
       }
-      .price-row {
-        padding-bottom: 2.5rem;
-        border-bottom: 1px solid #E8DAC8;
+      .price-item summary::-webkit-details-marker {
+        display: none;
       }
-      .price-row:last-child {
-        padding-bottom: 0;
-        border-bottom: none;
-      }
-      /* Hlavička: nadpis vlevo, cena vpravo, s mezerou a zarovnáním na linku */
       .price-head {
         display: flex;
         flex-wrap: wrap;
         align-items: baseline;
         justify-content: space-between;
         gap: 0.5rem 1.5rem;
+        flex: 1;
       }
       .price-head h3 {
         margin: 0;
-        flex: 1 1 60%;
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+        letter-spacing: -0.02em;
+        flex: 1 1 55%;
       }
       .price-meta {
         display: flex;
@@ -61,32 +75,57 @@
         white-space: nowrap;
       }
       .price-amount {
-        font-family: "Playfair Display", Georgia, serif;
+        font-family: var(--font-display);
         font-size: 1.25rem;
-        color: var(--ink, #544A4A);
+        color: var(--ink);
         line-height: 1.2;
       }
       .price-time {
-        font-size: 0.8125rem;
-        letter-spacing: 0.04em;
+        font-size: 0.75rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
         color: #9a8f84;
         margin-top: 0.25rem;
       }
-      .price-sub {
-        margin: 0.75rem 0 0;
-        font-size: 0.9375rem;
-        color: #8a7f74;
-        font-style: italic;
+      .price-toggle {
+        flex: 0 0 auto;
+        font-family: var(--font-display);
+        font-size: 1.5rem;
+        line-height: 1;
+        color: var(--accent);
+        transition: transform 0.35s var(--ease-soft, ease);
+        align-self: center;
       }
-      .price-desc {
-        margin: 1rem 0 1.25rem;
+      .price-item[open] .price-toggle {
+        transform: rotate(45deg);
+      }
+      .price-body {
+        padding: 0 0 2rem;
+        max-width: 40rem;
+      }
+      .price-body p {
+        margin-top: 1rem;
+        font-size: 0.9375rem;
         line-height: 1.75;
-        max-width: 46rem;
+        color: var(--smoke);
+      }
+      .price-body p:first-child {
+        margin-top: 0;
+      }
+      .price-body .price-order {
+        display: inline-block;
+        margin-top: 1.5rem;
+        color: var(--ink);
       }
       @media (max-width: 640px) {
-        .price-head { flex-direction: column; align-items: flex-start; }
-        .price-meta { align-items: flex-start; text-align: left; }
+        .price-head {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        .price-meta {
+          align-items: flex-start;
+          text-align: left;
+        }
       }
     </style>
   </head>
@@ -121,165 +160,540 @@
     </header>
 
     <main>
-      <!-- ═══════════════ HERO -->
+      <!-- ═══════════════ HERO / ÚVOD -->
       <section class="container page-hero">
-        <div class="reveal"><p class="eyebrow">Nabídka</p></div>
-        <h1 class="reveal" data-delay="80">Procedury &amp; ceník</h1>
-        <p class="lead reveal" data-delay="160">U mě si ošetření nevybíráte jako z jídelního lístku. O pořadí rozhoduji já — z toho, co ukáže diagnostika. Vy si vybíráte, že chcete začít.</p>
+        <div class="reveal"><p class="eyebrow">Služby a ceník</p></div>
+        <h1 class="reveal" data-delay="80">Služby, ceník a rezervace vašeho kosmetického ošetření</h1>
+        <p class="lead reveal" data-delay="160">
+          Každé ošetření začíná diagnostikou — teprve na základě toho, co vaše pleť ukazuje, sestavím
+          péči na míru. Pokud je to vhodné, součástí ošetření je i práce studenou plazmou
+          a ultrazvukovou špachtlí.
+        </p>
       </section>
 
-      <!-- ═══════════════ ÚVOD KE ZNAČKÁM -->
-      <section class="container section" style="padding-top:0">
+      <!-- ═══════════════ TŘI ZNAČKY + REZERVACE -->
+      <section class="container section" style="padding-top: 0">
         <div class="grid col-12">
           <div class="span-4">
             <div class="reveal">
-              <p class="eyebrow">Tři značky v synergii</p>
-              <h2 class="h2">Neexistuje jedna universální kosmetika, která vyhovuje všem</h2>
+              <p class="eyebrow">Tři značky, jedna logika</p>
+              <h2 class="h2">Někdy pleť potřebuje ošetření na míru, jindy precizní protokol</h2>
             </div>
           </div>
           <div class="span-7-6 col-center stack">
             <p class="reveal lead">
-              Pracuji se třemi značkami — DIBI Milano, Natinuel a Thessera. Doplňují se a používám je
-              v synergii, protože nevěřím, že jedna značka vyhovuje všem.
+              Pracuji se třemi značkami a každá má v systému svou roli. Natinuel je skládačka —
+              peelingy, séra a masky kombinuji při každé návštěvě podle toho, co vaše pleť právě
+              ukazuje. DIBI Milano a THESERA pracují v přesných protokolech, ověřených krok za
+              krokem. Někdy pleť potřebuje ošetření na míru, jindy precizní protokol. Co z toho,
+              rozhoduje diagnostika — ne katalog.
             </p>
             <p class="reveal lead" data-delay="100">
-              Využívám nejmodernější účinné látky a technologie jako exozomy, biomimetické peptidy, PDRN. Ne kvůli
-              trendu. Kvůli tomu, co dokážou s pletí.
+              Vyberte si ošetření a rezervujte si termín přes online rezervační systém (objednání
+              online není možné na termíny po 15. hodině). Pokud máte zájem o pozdější termín, nebo
+              vám online rezervace nevyhovuje, kontaktujte mě na
+              <a class="link-underline" href="tel:605134301" style="color: var(--ink)">605 134 301</a>
+              nebo přes Messenger. Pokud budu pracovat s klienty, ozvu se co nejdříve zpět.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════════ CENÍK -->
+      <!-- ═══════════════ JAK SPOLEČNĚ PRACUJEME -->
       <section class="border-y bg-paper">
         <div class="container section">
-          <div class="reveal">
-            <p class="eyebrow">Ceník</p>
-            <h2 class="h2">Ošetření podle skutečných potřeb vaší pleti</h2>
-          </div>
-
-          <div class="price-list">
-            <!-- 1 -->
-            <article class="price-row reveal">
-              <div class="price-head">
-                <h3>Úvodní ošetření s diagnostikou</h3>
-                <div class="price-meta"><span class="price-amount">1 750 Kč</span><span class="price-time">90 minut</span></div>
+          <div class="grid col-12">
+            <div class="reveal span-5">
+              <div class="photo-frame tall rounded">
+                <img src="static/index/photo7.jpeg" alt="Diagnostika pleti — Studio GH" loading="lazy" />
               </div>
-              <p class="price-sub">Pro nové klientky. Zklidnění, obnova, posílení.</p>
-              <p class="price-desc">
-                Nejsem kosmetička, která vám udělá ošetření a pošle vás domů. Začínáme diagnostikou.
-                Změřím hydrataci a promaštění, pod Woodovou lampou se podívám pod povrch a přečtu typ
-                i aktuální stav vaší pleti. Řeknu vám, co se na ní děje a proč — ne odhadem, ale z toho,
-                co vidím. Neodejdete jen s ošetřením. Odejdete s plánem.
+            </div>
+            <div class="span-6-7 col-center">
+              <p class="eyebrow reveal">Spolupráce</p>
+              <h2 class="h2 reveal" data-delay="80">Jak společně pracujeme</h2>
+              <p class="lead mt-6 reveal" data-delay="160">
+                Na začátku si řekneme, co chcete řešit, jak často chcete chodit a co je reálné.
+                Na základě diagnostiky sestavím plán — kam budeme pleť směřovat a jakými kroky.
               </p>
-              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Objednat →</a>
-            </article>
-
-            <!-- 2 -->
-            <article class="price-row reveal" data-delay="80">
-              <div class="price-head">
-                <h3>Stabilizační ošetření</h3>
-                <div class="price-meta"><span class="price-amount">1 570–2 900 Kč</span></div>
-              </div>
-              <p class="price-sub">Zklidnění, obnova, posílení.</p>
-              <p class="price-desc">
-                Pleť, která je pořád podrážděná. Pálí, táhne, zčervená skoro z ničeho. Akné, které se
-                vrací. Rosacea, dermatitida, dehydratace, která nejde zalít sebevětší dávkou krému.
-                Tahle pleť nepotřebuje silnější aktivní látky. Potřebuje klid a pevnou bariéru.
-                Pracuji s ošetřením Defence a Pro Cellular od DIBI Milano a se stabilizačními protokoly
-                Natinuel, vždy podle toho, co vaše pleť snese. Pokud vám stabilní, klidná pleť stačí,
-                je to v pořádku. Není to mezistanice. Pro spoustu žen je to cíl.
+              <p class="lead mt-6 reveal" data-delay="240">
+                Plán se přizpůsobuje. Někdy pleť reaguje na stres, hormony nebo změnu prostředí.
+                Někdy je potřeba zareagovat na výkyvy. To je normální — důležité je, že víme, kam
+                směřujeme.
               </p>
-              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
-            </article>
-
-            <!-- 3 -->
-            <article class="price-row reveal" data-delay="160">
-              <div class="price-head">
-                <h3>Regenerace</h3>
-                <div class="price-meta"><span class="price-amount">1 750 Kč</span></div>
-              </div>
-              <p class="price-sub">Příprava vnitřního prostředí pleti.</p>
-              <p class="price-desc">
-                Pleť je klidná, ale unavená. Vrací se pomalu, ztrácí svěžest, působí vyčerpaně. Cítíte,
-                že má na víc — jen jí chybí síla se nastartovat. Regenerace upraví vnitřní prostředí
-                pleti, podpoří tvorbu nových buněk a probudí buněčnou aktivitu. Pracuji s Rx Carboxy
-                a séry — samostatně nebo s hloubkovou stimulací pleti, s ošetřením RX50 a jemným
-                vstupem exozomů ExoHyal. Pleť tím dostává z čeho stavět.
+              <p class="lead mt-6 reveal" data-delay="320">
+                Pokud plánujete estetický zákrok, dejte mi vědět včas. Když pleť na zákrok
+                připravíme, výsledek bude výrazně lepší a trvalejší.
               </p>
-              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
-            </article>
-
-            <!-- 4 -->
-            <article class="price-row reveal" data-delay="240">
-              <div class="price-head">
-                <h3>Biostimulace</h3>
-                <div class="price-meta"><span class="price-amount">2 400–2 600 Kč</span><span class="price-time">90 minut</span></div>
-              </div>
-              <p class="price-sub">Aktivní obnova připravené pleti.</p>
-              <p class="price-desc">
-                Pleť ztrácí pevnost. Kontury se mění, kolagen ubývá, přibývají pigmentace. Cítíte, že
-                běžná péče už nestačí. Máte pravdu — nestačí. Biostimulace probouzí to, co pleť časem
-                ztrácí: schopnost obnovovat se zevnitř. Podporuje tvorbu kolagenu, pevnost, hustotu.
-                Pracuji s Rx Carboxy a séry — samostatně nebo s hloubkovou stimulací pleti, s párem
-                Bio-Mec a Bio-Oxy a s ošetřeními Thessera. Žádný zázrak na týden. Postupná, viditelná
-                proměna.
-              </p>
-              <a class="link-underline nav-link" href="rezervace.html" style="color: var(--ink)">Popis ošetření a objednání →</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ PRVNÍ NÁVŠTĚVA -->
-      <section class="container section">
-        <div class="grid col-12">
-          <div class="reveal span-5">
-            <div class="photo-frame tall rounded">
-              <img src="static/index/photo7.jpeg" alt="Diagnostika pleti — Studio GH" loading="lazy" />
             </div>
           </div>
-          <div class="span-6-7 col-center">
-            <p class="eyebrow reveal">Jak probíhá první návštěva</p>
-            <h2 class="h2 reveal" data-delay="80">Vždy začínáme konzultací a diagnostikou</h2>
-            <p class="lead mt-6 reveal" data-delay="160">
-              Zajímá mě všechno, co má na stav vaší pleti vliv — zdravotní stav, životní styl i to,
-              jak o ni pečujete. Analyzérem změřím hloubkovou hydrataci a promaštění, pod Woodovou
-              lampou posoudím stav bariéry, pigmentace a hlubších vrstev, které pouhým okem nevidíte.
-            </p>
-            <p class="lead mt-6 reveal" data-delay="240">
-              Součástí ošetření je i úprava a barvení obočí a drobné epilace v obličeji voskem Lycon.
-              Podle potřeby pracuji s ultrazvukovou špachtlí a studenou plazmou.
-            </p>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 1 — SEZNAMOVACÍ OŠETŘENÍ -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="span-4">
+            <div class="reveal">
+              <p class="eyebrow">Ceník — 01</p>
+              <h2 class="h2">Seznamovací ošetření</h2>
+              <p class="price-intro">
+                Pro nové klientky. Každá spolupráce začíná tady. Diagnostika, rozbor stavu pleti
+                a první šetrné ošetření. Pleť, kterou vidím poprvé, nikdy nezatěžuji — nejdřív ji
+                potřebuji přečíst.
+              </p>
+            </div>
+          </div>
+          <div class="span-7-6 col-center">
+            <div class="price-list">
+              <details class="price-item reveal">
+                <summary>
+                  <div class="price-head">
+                    <h3>Seznamovací ošetření</h3>
+                    <div class="price-meta">
+                      <span class="price-amount">1 750 Kč</span>
+                      <span class="price-time">90 minut</span>
+                    </div>
+                  </div>
+                  <span class="price-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="price-body">
+                  <p>Jdete ke mně poprvé?</p>
+                  <p>
+                    Nevíte si rady, které ošetření je pro vás to pravé? Nemusíte to řešit. To je
+                    moje práce.
+                  </p>
+                  <p>
+                    Možná máte pocit, že už jste zkusila všechno. Že děláte všechno správně, a pleť
+                    stejně nespolupracuje. Že se v té záplavě rad a produktů ztrácíte.
+                  </p>
+                  <p>Začínáme úplně jinak. Diagnostikou.</p>
+                  <p>
+                    Než cokoliv aplikuju, potřebuju vaši pleť přečíst. Vidět, v jakém stavu opravdu
+                    je. Projdeme spolu, jak vaše pleť reaguje. Co ji oslabuje. Co potřebuje. Samotné
+                    ošetření pak stavím záměrně šetrně — pleť, kterou vidím poprvé, nikdy nezatěžuji
+                    intenzivní stimulací. Nejdřív potřebuji vidět, jak reaguje. Teprve potom má
+                    smysl plánovat další kroky.
+                  </p>
+                  <p>
+                    Odejdete s ošetřením. A s plánem. S jasnou představou, co vaše pleť potřebuje
+                    a co má smysl.
+                  </p>
+                  <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                </div>
+              </details>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════════ JAK PRACUJEME + OBJEDNÁNÍ -->
+      <!-- ═══════════════ SEKCE 2 — STABILIZAČNÍ OŠETŘENÍ -->
       <section class="border-y bg-paper">
         <div class="container section">
           <div class="grid col-12">
             <div class="span-4">
               <div class="reveal">
-                <p class="eyebrow">Spolupráce</p>
-                <h2 class="h2">Jak společně pracujeme</h2>
+                <p class="eyebrow">Ceník — 02</p>
+                <h2 class="h2">Stabilizační ošetření</h2>
+                <p class="price-intro">
+                  Zklidnění, obnova kožní bariéry, hloubková hydratace, snížení podráždění. Pleť
+                  musí být ve stavu, kdy dokáže na péči správně reagovat. Základ, bez kterého další
+                  kroky nedávají smysl.
+                </p>
               </div>
             </div>
-            <div class="span-7-6 col-center stack">
-              <p class="reveal lead">
-                Na začátku si řekneme, co chcete řešit, jak často chcete chodit a co je reálné.
-                Z diagnostiky pak sestavím plán — kam pleť směřujeme a jakými kroky.
-              </p>
-              <p class="reveal lead" data-delay="100">
-                Plán se přizpůsobuje. Pleť reaguje na stres, hormony, změnu prostředí. Někdy je potřeba
-                zareagovat na výkyv. To je normální — důležité je, že víme, kam jdeme. Pokud plánujete
-                estetický zákrok, dejte mi vědět včas. Připravená pleť drží výsledek výrazně líp a déle.
-              </p>
-              <p class="closing reveal" data-delay="200">
-                Rezervujte přes online systém (online objednání není možné na termíny po 15. hodině).
-                Pokud vám online termín nevyhovuje, napište na 605 134 301 nebo přes Messenger.
+            <div class="span-7-6 col-center">
+              <div class="price-list">
+                <details class="price-item reveal">
+                  <summary>
+                    <div class="price-head">
+                      <h3>Stabilizace Natinuel</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">1 750 Kč</span>
+                        <span class="price-time">90 minut</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Na Natinuelu miluji, že je jako skládačka. Peelingy, séra, masky — a z nich se
+                      skládá přesně to, co vaše pleť právě potřebuje.
+                    </p>
+                    <p>
+                      Ošetření pro pleť, která má problém. Akné v dospělosti, rosacea, podráždění,
+                      narušená bariéra. Stavy, které je potřeba nejdřív zklidnit a stabilizovat, než
+                      se dá jít dál.
+                    </p>
+                    <p>
+                      Cílem není pleť přetížit aktivními látkami ani ji zlomit silou. Nejdřív
+                      zklidnění, posílení bariéry, návrat rovnováhy, ze které se dá vycházet.
+                      A protože se stav pleti v čase mění, mění se i skladba ošetření — pokaždé
+                      podle toho, co pleť aktuálně ukazuje. Žádná šablona.
+                    </p>
+                    <p>Základ, bez kterého ostatní kroky nedávají smysl.</p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="80">
+                  <summary>
+                    <div class="price-head">
+                      <h3>Defence — zklidnění reaktivní pleti</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 100 Kč</span>
+                        <span class="price-time">75 minut</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Pro pleť, která se brání. Zarudlá, napjatá, podrážděná. Reaguje skoro na
+                      všechno a ztrácí klid.
+                    </p>
+                    <p>
+                      Ošetření zklidňuje zarudnutí, mírní pocit pnutí a suchosti a posiluje
+                      oslabenou bariéru. Aktivní látky se díky technologii niozomů dostávají
+                      hlouběji, kde mají skutečně působit. Bez parfemace, šetrné i k té
+                      nejcitlivější pleti.
+                    </p>
+                    <p>Pleť je klidnější, vyrovnanější a líp chráněná před tím, co ji dráždí.</p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="160">
+                  <summary>
+                    <div class="price-head">
+                      <h3>THESERA H — hloubková buněčná hydratace</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 200 Kč</span>
+                        <span class="price-time">75 minut</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Pro pleť, která je suchá jinak než jen na povrchu. Matná, napjatá, unavená.
+                      Krémy jí ulevují na pár hodin, ale problém se vrací — protože nedostatek
+                      vlhkosti není v krému, je v buňkách.
+                    </p>
+                    <p>
+                      Ošetření pracuje s aquaporiny — vodními kanálky v buněčných membránách, které
+                      řídí, kolik vody se do buněk skutečně dostane. Postupnými kroky se aktivují:
+                      zahřátí pleti, okysličení mikrobublinkami, koncentrované ampule se slaností
+                      odpovídající tělesným tekutinám, aby pleť aktivní látky maximálně přijala.
+                      Na závěr se vlhkost uzamkne, aby v pleti zůstala.
+                    </p>
+                    <p>
+                      Výsledek je okamžitě viditelný — vypnutá, rozzářená pleť. Ale podstata je
+                      hlubší: pleť, která zase umí hospodařit s vodou. V klinickém testování bez
+                      jediné podrážděné reakce, takže je vhodné i pro citlivou pleť.
+                    </p>
+                    <p>
+                      A je to zároveň podmínka pro všechno další: pleť s funkčním vodním
+                      hospodařením má kapacitu reagovat na regeneraci i biostimulaci. Proto
+                      hydratace nikdy není „jen hydratace“.
+                    </p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 3 — REGENERACE -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="span-4">
+            <div class="reveal">
+              <p class="eyebrow">Ceník — 03</p>
+              <h2 class="h2">Regenerace</h2>
+              <p class="price-intro">
+                Obnova a posílení buněk před biostimulací. Stimulace má smysl jen tehdy, když na ni
+                buňky mají kapacitu — regenerace jim ji vrací. Pracuji s peelingem RX50
+                a mikroneedlingem RxCarboxy, stejně jako v biostimulaci — rozdíl je ve volbě sér.
+                Tady je cílem obnova, ne výkon.
               </p>
             </div>
+          </div>
+          <div class="span-7-6 col-center">
+            <div class="price-list">
+              <details class="price-item reveal">
+                <summary>
+                  <div class="price-head">
+                    <h3>RX50 + regenerační séra</h3>
+                    <div class="price-meta">
+                      <span class="price-amount">2 400 Kč</span>
+                      <span class="price-time">75 minut</span>
+                    </div>
+                  </div>
+                  <span class="price-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="price-body">
+                  <p>
+                    Peeling nové generace v regenerační roli. Šetrně obnovuje pleť — pomáhá jí
+                    zbavovat se odumřelých buněk, podporuje buněčnou energii a vrací svěžest, aniž
+                    by narušil bariéru. Díky olejové struktuře není pleť po ošetření stažená ani
+                    podrážděná; součástí je revitalizační masáž.
+                  </p>
+                  <p>
+                    Séra volím regenerační — cílem je obnova a posílení buněk, ne jejich maximální
+                    výkon. Pleť po ošetření není vyčerpaná, je připravenější.
+                  </p>
+                  <p>
+                    Tohle je krok, který připravuje půdu. Zregenerovaná pleť má kapacitu odpovědět
+                    na biostimulaci naplno — a to je rozdíl mezi ošetřením, které pěkně vypadá
+                    týden, a výsledkem, který vydrží.
+                  </p>
+                  <p>Lze provádět po celý rok.</p>
+                  <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                </div>
+              </details>
+
+              <details class="price-item reveal" data-delay="80">
+                <summary>
+                  <div class="price-head">
+                    <h3>RxCarboxy + cílená séra</h3>
+                    <div class="price-meta">
+                      <span class="price-amount">2 400 Kč</span>
+                      <span class="price-time">75 minut</span>
+                    </div>
+                  </div>
+                  <span class="price-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="price-body">
+                  <p>
+                    Přizpůsobivé ošetření, které může být regenerační i stimulační — podle toho,
+                    v jaké fázi je vaše pleť.
+                  </p>
+                  <p>
+                    Revitalizační báze pracuje na více úrovních: lepší okysličení tkání,
+                    antioxidační ochrana, obnova bariéry. Aktivní séra k ní vybírám podle vašeho
+                    aktuálního stavu — někdy pleť potřebuje zklidnit a zregenerovat, jindy je
+                    připravená na hlubší biostimulaci a podporu kolagenu.
+                  </p>
+                  <p>
+                    Jedno ošetření vytržené z kontextu pleť dlouhodobě nezmění. Pracuju s vámi
+                    v návaznosti — podle toho, jak pleť reaguje. To je jediná cesta k výsledku,
+                    který vydrží.
+                  </p>
+                  <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                </div>
+              </details>
+
+              <details class="price-item reveal" data-delay="160">
+                <summary>
+                  <div class="price-head">
+                    <h3>ProCellular — regenerace a obnova</h3>
+                    <div class="price-meta">
+                      <span class="price-amount">2 900 Kč</span>
+                      <span class="price-time">75 minut</span>
+                    </div>
+                  </div>
+                  <span class="price-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="price-body">
+                  <p>
+                    Někdy pleť prostě potřebuje vydechnout. Po náročném období, po slunci, po čase,
+                    kdy toho zvládla víc, než měla.
+                  </p>
+                  <p>
+                    ProCellular je mimořádné ošetření pro skutečně namáhanou pleť. Hluboká
+                    regenerace s probiotickým komplexem, který obnovuje bariéru, posiluje
+                    přirozenou obranu pleti a vrací jí rovnováhu. Zklidňuje, vyživuje a dodává sílu
+                    zevnitř.
+                  </p>
+                  <p>
+                    Tam, kde běžná péče nestačí. Pleť je klidnější, pevnější, jako po pořádném
+                    odpočinku.
+                  </p>
+                  <p>Vhodné i jako podpora po zákrocích estetické medicíny.</p>
+                  <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                </div>
+              </details>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 4 — BIOSTIMULACE -->
+      <section class="border-y bg-paper">
+        <div class="container section">
+          <div class="grid col-12">
+            <div class="span-4">
+              <div class="reveal">
+                <p class="eyebrow">Ceník — 04</p>
+                <h2 class="h2">Biostimulace</h2>
+                <p class="price-intro">
+                  Cílená stimulace: kolagen, pevnost, hutnost pleti. Nejsilnější nástroje, které
+                  mají smysl teprve tehdy, když je pleť zdravá, stabilní a zregenerovaná. Proto je
+                  tahle fáze poslední — ne první.
+                </p>
+              </div>
+            </div>
+            <div class="span-7-6 col-center">
+              <div class="price-list">
+                <details class="price-item reveal">
+                  <summary>
+                    <div class="price-head">
+                      <h3>Acid Infusion — bioaktivace a obnova</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 200 Kč</span>
+                        <span class="price-time">75 minut · celoročně</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Pro pleť, která ztratila svěžest a schopnost se obnovovat. Nerovnoměrná
+                      struktura, mdlý tón, první i pokročilejší známky stárnutí — chronologického
+                      i toho ze slunce.
+                    </p>
+                    <p>
+                      Ošetření staví na kombinaci čistých kyselin a dermoaktivních látek. Kyseliny
+                      normalizují obnovu pokožky a šetrně odstraní to, co pleť brzdí. Bioaktivní
+                      složky pak stimulují vitalitu a restrukturalizaci — pleť nedostane jen
+                      povrchové vyhlazení, ale impuls k vlastní obnově.
+                    </p>
+                    <p>
+                      Není to agresivní peeling. Je to řízená bioaktivace, kterou lze provádět po
+                      celý rok — vhodná pro každý typ pleti, od mladší pleti jako prevence až po
+                      zralou pleť, kde pracuje na opravě a antioxidační ochraně.
+                    </p>
+                    <p>
+                      Nejsilnější výsledek přináší v kúře, kde na sebe jednotlivá ošetření navazují
+                      v rytmu, ve kterém pleť stíhá odpovídat.
+                    </p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="80">
+                  <summary>
+                    <div class="price-head">
+                      <h3>Red Collagen</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 400 Kč</span>
+                        <span class="price-time">75 minut</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Pro pleť, která ztrácí pevnost a kontury. Tam, kde chcete podpořit hustotu
+                      a vypnutější vzhled, ale šetrně, bez jehel, bez rekonvalescence.
+                    </p>
+                    <p>
+                      Ošetření spojuje aktivní séra s červeným světlem a řízeným teplem kolem
+                      42 °C. V těchto podmínkách se aktivní složky aktivují přímo v pleti
+                      a vytvářejí prostředí příznivé pro kolagen. Pleť působí pevněji, kontury
+                      výraznější, póry jemnější.
+                    </p>
+                    <p>
+                      Pro zralou pleť, ztrátu pevnosti a oblasti tváří, čelisti a krku, které
+                      ztratily napětí. Vhodné i pro citlivější pleť.
+                    </p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="160">
+                  <summary>
+                    <div class="price-head">
+                      <h3>RX50 synergický peeling</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 400 Kč</span>
+                        <span class="price-time">75 minut · celoročně</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>Peeling nové generace pro každé roční období. I v létě.</p>
+                    <p>
+                      Šetrně obnovuje pleť — pomáhá jí přirozeně se zbavovat odumřelých buněk,
+                      podporuje tvorbu kolagenu a vrací svěžest. A přitom nenarušuje bariéru. Díky
+                      olejové struktuře není po něm pleť stažená ani podrážděná; součástí je
+                      revitalizační masáž.
+                    </p>
+                    <p>
+                      Pro pleť, která potřebuje rozjasnit, vyhladit a nastartovat — bez agrese
+                      a bez nutnosti schovávat se před sluncem.
+                    </p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="240">
+                  <summary>
+                    <div class="price-head">
+                      <h3>RxCarboxy + biostimulace</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 600 Kč</span>
+                        <span class="price-time">75 minut · říjen–duben</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                    <p>
+                      Přizpůsobivé ošetření, které může být regenerační i stimulační — podle toho,
+                      v jaké fázi je vaše pleť. Rozdíl je v hloubce: aktivní látky zapracovávám
+                      mikroneedlingem, takže se dostanou hlouběji a pracují intenzivněji.
+                    </p>
+                    <p>
+                      Séra volím podle vašeho stavu — někdy je cílem hloubková regenerace, jindy
+                      biostimulace a tvorba kolagenu.
+                    </p>
+                    <p>
+                      Samostatné ošetření udělá hodně, ale skutečný a trvalý výsledek vzniká až
+                      v návaznosti. Stavíme péči v čase, ne v jedné návštěvě.
+                    </p>
+                    <p>Provádí se pouze v období říjen–duben.</p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ═══════════════ SEKCE 5 — KÚRY -->
+      <section class="container section">
+        <div class="grid col-12">
+          <div class="span-4">
+            <div class="reveal">
+              <p class="eyebrow">Ceník — 05</p>
+              <h2 class="h2">Kúry</h2>
+            </div>
+          </div>
+          <div class="span-7-6 col-center stack">
+            <p class="reveal lead">
+              Kúra je série 4 až 6 ošetření v rozestupu 9 až 14 dnů. Ten interval není náhodný.
+              Pleť potřebuje čas na biologickou odpověď — buňky na stimulaci reagují postupně
+              a další ošetření navazuje ve chvíli, kdy je pleť připravená, ne dřív.
+            </p>
+            <p class="reveal lead" data-delay="100">
+              Kúru provádím maximálně jednou ročně. Víc není potřeba. Intenzivní stimulace má smysl
+              jako impuls, ne jako trvalý stav — zbytek roku pleť výsledky udržuje a prohlubuje
+              běžnou péčí.
+            </p>
+            <p class="reveal lead" data-delay="200">
+              Cena ošetření v kúře začíná na 2 600 Kč. Přesnou skladbu i cenu sestavuji individuálně
+              podle diagnostiky a před zahájením ji s vámi vždy projdu.
+            </p>
+            <p class="closing reveal" data-delay="280">
+              Kúry nemají online rezervaci — pro konzultaci mě kontaktujte na
+              <a class="link-underline" href="tel:605134301" style="color: var(--ink)">605 134 301</a>
+              nebo přes Messenger.
+            </p>
           </div>
         </div>
       </section>
