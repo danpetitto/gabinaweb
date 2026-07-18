@@ -603,7 +603,11 @@ main {
   margin-top: 2.5rem;
 }
 
-/* ── Headings ── */
+/* ── Headings — zlatý akcent jen na hlavních nadpisech ── */
+h1 {
+  color: var(--accent);
+}
+
 .h2 {
   margin-top: 1.25rem;
   font-family: var(--font-display);

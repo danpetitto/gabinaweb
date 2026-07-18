@@ -9,6 +9,59 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Právní text — dlouhý dokument, čitelná typografie v duchu webu */
+      .legal {
+        max-width: 46rem;
+      }
+      .legal h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+        letter-spacing: -0.04em;
+        margin-top: 3.5rem;
+      }
+      .legal h3 {
+        font-family: var(--font-body);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: var(--smoke);
+        margin-top: 2.5rem;
+      }
+      .legal p,
+      .legal li {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--smoke);
+        margin-top: 1.25rem;
+      }
+      .legal ol,
+      .legal ul {
+        padding-left: 1.5rem;
+      }
+      .legal ol li,
+      .legal ul li {
+        margin-top: 0.75rem;
+      }
+      .legal a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+      }
+      .legal .legal-meta {
+        margin-top: 2rem;
+        border: 1px solid var(--sand);
+        border-radius: 2px;
+        background: var(--paper);
+        padding: 2rem;
+      }
+      .legal .legal-meta p {
+        margin-top: 0.5rem;
+      }
+      .legal .legal-meta p:first-child {
+        margin-top: 0;
+      }
+    </style>
   </head>
   <body>
 <header class="header">
@@ -21,6 +74,7 @@
           <a class="nav-link link-underline" data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
           <a class="nav-link link-underline" data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a class="nav-link link-underline" data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a class="nav-link link-underline" data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
           <a class="nav-cta" href="rezervace.html">Rezervace</a>
         </nav>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
@@ -33,6 +87,7 @@
           <a data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
           <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
+          <a data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
           <a class="btn" href="rezervace.html">Rezervace <span aria-hidden="true">→</span></a>
         </nav>
       </div>
@@ -41,12 +96,269 @@
       <section class="container page-hero">
         <div class="reveal"><p class="eyebrow">Právní informace</p></div>
         <h1 class="reveal" data-delay="80">Obchodní podmínky</h1>
+        <p class="lead reveal" data-delay="160">Všeobecné obchodní podmínky pro prodej kosmetických služeb a produktů.</p>
       </section>
       <section class="container" style="padding-bottom:6rem">
-        <div class="reveal" style="border:1px solid var(--sand);border-radius:2px;padding:2.5rem;background:var(--paper)">
-          <p class="eyebrow">Připravujeme</p>
-          <p class="lead" style="margin-top:1rem;font-size:1rem">Text obchodních podmínek se doplní.</p>
-        </div>
+        <article class="legal reveal">
+          <p>
+            Milí návštěvníci <a href="index.html">www.studiogh.cz</a>, právě jste se ocitli na stránce
+            se všeobecnými obchodními podmínkami pro prodej kosmetických služeb a kosmetických
+            produktů.
+          </p>
+          <p>
+            Na webových stránkách <a href="index.html">www.studiogh.cz</a> (dále jen &bdquo;web&ldquo; nebo
+            &bdquo;webové rozhraní&ldquo;) jste si nejspíš už přečetli podrobnosti o vámi vybrané službě. Tyto
+            Všeobecné obchodní podmínky (zkráceně jen &bdquo;VOP&ldquo;) obsahují informace, které potřebujete
+            mít k dispozici před tím, než kliknete na objednávací tlačítko. Přečtěte si je proto,
+            prosím, pečlivě. Tím, že si rezervujete termín kosmetického ošetření, nebo zakoupíte
+            kosmetický produkt, dáváte najevo souhlas s obchodními podmínkami. Pokud si VOP
+            přečtete, bude váš souhlas opravdu souhlasem.
+          </p>
+
+          <h2>Kdy se VOP používají</h2>
+          <p>
+            VOP se použijí pro prodej a objednávku zboží a kosmetických služeb (obojí dohromady bude
+            v dalším textu zkráceně označováno i jen jako &bdquo;produkty&ldquo;).
+          </p>
+          <p>
+            Samotný nákup produktů a objednávání služeb a proces uzavření smlouvy je popsaný níže.
+            VOP jsou dokumentem, který tvoří nedílnou součást smlouvy uzavřené mezi námi. Pokud by ve
+            Smlouvě byla ujednání, která se liší od textu VOP, mají ujednání ve Smlouvě přednost.
+          </p>
+          <p>
+            Nákup produktů probíhá na základě Kupní smlouvy uzavírané mezi mnou jako Prodávajícím
+            a vámi jako Kupujícím. Poskytování služeb probíhá na základě Smlouvy o poskytování
+            služeb uzavřené mezi mnou jako Poskytovatelem a vámi jako Klientem (jako příjemcem
+            služby). Pokud je ve VOP užíván pouze pojem &bdquo;Smlouva&ldquo;, rozumí se tím jak Kupní smlouva,
+            tak Smlouva o poskytování služeb. Smlouva je tvořena vaší objednávkou (dohodnutím
+            závazného termínu kosmetické služby) a jejím přijetím z mé strany a těmito VOP.
+          </p>
+
+          <h2>Obsah VOP</h2>
+          <ol>
+            <li>Základní údaje o mně</li>
+            <li>Důležité pojmy</li>
+            <li>Jak na objednávku a uzavření Smlouvy?</li>
+            <li>Jak je to s cenou produktů a jak se platí?</li>
+            <li>Odstoupení od Smlouvy</li>
+            <li>Záruka, práva z vadného plnění a reklamační řád</li>
+            <li>Vyřizování stížností, řešení spotřebitelských sporů</li>
+            <li>Závěrem</li>
+          </ol>
+
+          <h2>Základní údaje o mně</h2>
+          <div class="legal-meta">
+            <p><strong>Gabriela Hřibová</strong></p>
+            <p>IČ: 71832173</p>
+            <p>Sídlo: Hevlín 271, 671 69 Hevlín</p>
+            <p>E-mail: <a href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a></p>
+            <p>Telefon: <a href="tel:605134301">605 134 301</a></p>
+          </div>
+          <p>Jsem zapsaná v Živnostenském rejstříku. Nejsem plátce DPH.</p>
+          <p>
+            Adresa pro doručování je shodná s adresou sídla. Na uvedeném e-mailu jsem vám
+            k dispozici pro běžnou komunikaci i pro případné vyřizování podnětů a reklamací.
+            V dalším textu vystupuji už jen jako &bdquo;Prodávající&ldquo;.
+          </p>
+
+          <h2>Důležité pojmy</h2>
+          <h3>Kdo je Kupující?</h3>
+          <p>
+            Kupujícím je ten, kdo se mnou, rezervováním termínu, uzavře Smlouvu o poskytování
+            služeb, nebo si zakoupí zboží.
+          </p>
+          <p>
+            I když předpokládám, že typickým Kupujícím, který si koupí produkty nebo objedná
+            vzdělávací akci, bude spotřebitel, může být Kupujícím samozřejmě i podnikatel
+            (podnikající fyzická osoba &ndash; OSVČ anebo právnická osoba, např. s.r.o. nebo akciová
+            společnost).
+          </p>
+          <h3>Kdo je Spotřebitelem?</h3>
+          <p>
+            Spotřebitelem se podle zákona rozumí fyzická osoba, která nejedná v rámci své
+            podnikatelské činnosti nebo v rámci samostatného výkonu povolání. Pokud jste fyzická
+            osoba a do objednávky uvedete IČO, budu mít za to, že Smlouvu uzavíráte jako podnikatel,
+            a ne jako spotřebitel.
+          </p>
+          <h3>Co je spotřebitelská smlouva?</h3>
+          <p>
+            Je to Smlouva, ve které jako Kupující vystupuje spotřebitel. Spotřebitel má v mnoha
+            případech výhodnější postavení než ostatní kupující. Pokud se některé právo týká pouze
+            Spotřebitele, je to ve VOP výslovně uvedeno (tj. místo &bdquo;Kupující&ldquo; je uvedeno
+            &bdquo;Spotřebitel&ldquo;).
+          </p>
+          <h3>Co je smlouva uzavřená distančním způsobem?</h3>
+          <p>
+            Jedná se o Smlouvu, která je uzavřena prostřednictvím prostředků komunikace na dálku,
+            tj. je uzavřena, aniž bychom se museli osobně potkat, neboť k jejímu uzavření využíváme
+            webové rozhraní nebo telefonní hovor. Náklady spojené s použitím prostředků komunikace
+            na dálku (zejména náklady na internetové připojení a případné telefonní hovory) si jako
+            Kupující hradíte sami a neliší se od běžné sazby účtované vaším operátorem, resp.
+            poskytovatelem internetového připojení. Učiněním objednávky výslovně souhlasíte
+            s použitím prostředků komunikace na dálku.
+          </p>
+          <h3>Jakými právními předpisy se smluvní vztah mezi námi řídí?</h3>
+          <p>
+            Jsou to platné právní předpisy, zejména zákon č. 89/2012 Sb., občanský zákoník (dále též
+            jen &bdquo;NOZ&ldquo;) a v případech, kdy je Kupujícím spotřebitel, je to i zákon č. 634/1992 Sb.,
+            o ochraně spotřebitele.
+          </p>
+
+          <h2>Jak na objednávku a uzavření smlouvy?</h2>
+          <ol>
+            <li>
+              Jako Kupující objednáváte produkty i služby skrze objednávkový systém na webových
+              stránkách, vyplněním tam umístěného objednávkového formuláře nebo závaznou rezervací
+              termínu telefonicky, e-mailem nebo SMS.
+            </li>
+            <li>
+              POPIS PRODUKTŮ A SLUŽEB: Na webovém rozhraní naleznete podrobný popis nabízených
+              kosmetických služeb, jejich obsah, informace o tom, pro koho jsou určeny a jaký přínos
+              od nich můžete očekávat. Na webovém rozhraní naleznete i reference klientů, kteří
+              produkty pořídili před vámi. Prezentace produktů uvedená na webovém rozhraní je
+              informativního charakteru. Jako Prodávající nejsem povinna uzavřít Smlouvu. Ustanovení
+              § 1732 odst. 2 NOZ se nepoužije.
+            </li>
+            <li>
+              OBJEDNÁNÍ PRODUKTŮ A SLUŽEB: Pro objednání můžete využít Messenger, telefonní číslo,
+              e-mail nebo osobní dohodnutí rezervace.
+            </li>
+          </ol>
+          <p>
+            Doručením potvrzení o přijetí objednávky na vaši elektronickou adresu uvedenou
+            v objednávce je Smlouva uzavřena.
+          </p>
+          <p>
+            Jakékoli změny uzavřené Smlouvy (včetně zrušení objednávky) jsou možné jen na základě
+            dohody mezi námi. Do doby uzavření Smlouvy můžete svoji objednávku zrušit e-mailem
+            poslaným na moji elektronickou adresu uvedenou v části &bdquo;Základní údaje o mně&ldquo; těchto
+            VOP.
+          </p>
+          <p>
+            V pochybnostech vás mohu kontaktovat za účelem ověření pravosti objednávky
+            a nepodaří-li se pravost objednávky ověřit, má se za to, že objednávka vůbec nebyla
+            podána a takovou objednávkou se nadále nezabývám.
+          </p>
+          <p>
+            Objednávat produkty a služby přes webové rozhraní je možné 24 hodin denně, 7 dní
+            v týdnu. Upozorňuji však, že výjimečně může dojít k dočasné nedostupnosti webu
+            v důsledku nutné údržby webu anebo v důsledku okolností, za které neodpovídám, jako jsou
+            výpadky připojení k internetové síti apod.
+          </p>
+
+          <h2>Jak je to s cenou produktů a jak se platí</h2>
+          <p>
+            CENA PRODUKTŮ A VZDĚLÁVACÍCH AKCÍ: Na webovém rozhraní je uvedena i cena. Cena je platná
+            po celou dobu, kdy je na webovém rozhraní uvedena.
+          </p>
+          <ol>
+            <li>
+              Sjednanou cenou je cena uvedená u produktu nebo vzdělávací akce v okamžiku odeslání
+              vaší objednávky. Pokud by došlo ke zjevné chybě při uvedení ceny na webovém rozhraní
+              (tím je myšlen především překlep, chyba při zadávání ceny) nebo obdobné chybě
+              v procesu uzavírání Smlouvy, pak nejsem povinna vám za takovou zjevně chybnou cenu
+              produkt dodat, a to ani v případě, že došlo k automatickému potvrzení o přijetí
+              objednávky. V případě, že by již došlo z vaší strany i k úhradě této zjevně chybné
+              ceny, jsem oprávněna od Smlouvy odstoupit a uhrazenou částku vám v tom případě vrátit.
+              Dojde-li ke změně ceny v době mezi odesláním vaší objednávky a jejím potvrzením z mé
+              strany, platí cena platná v okamžiku odeslání objednávky, nedojde-li mezi námi k jiné
+              výslovné dohodě.
+            </li>
+            <li>
+              ZPŮSOB PLATBY: Sjednanou cenu je možné uhradit následujícím způsobem:
+              <ul>
+                <li>bezhotovostně platební kartou při osobním odběru,</li>
+                <li>v hotovosti při osobním odběru.</li>
+              </ul>
+            </li>
+          </ol>
+
+          <h2>Odstoupení od smlouvy</h2>
+          <p>
+            V případě domluvení závazného termínu je možné bezplatně odstoupit od služby do
+            2 pracovních dnů před termínem služby. Pokud je termín zrušen v době kratší než 2 dny
+            před termínem služby, je Kupující povinen zaplatit storno poplatek 500 Kč. Pokud se
+            Kupující nedostaví, je povinen uhradit 100 % ceny služby.
+          </p>
+
+          <h2>Záruka, práva z vadného plnění a reklamační řád</h2>
+          <ol>
+            <li>
+              Práva vznikající z vadného plnění se řídí platnými právními předpisy, zejména
+              ustanoveními § 1914 až 1925, § 2099 až 2112 a § 2161 až 2174 NOZ.
+            </li>
+            <li>Práva ze záruky se řídí zejména ustanoveními § 2113 až 2117 NOZ.</li>
+            <li>
+              Jako Prodávající vám odpovídám za to, že produkt při převzetí nemá vady. Jste-li
+              Spotřebitelem, pak v případě, že se vada projeví do 6 měsíců od převzetí, má se za to,
+              že produkt byl vadný již při převzetí. Jste-li Spotřebitelem, odpovídám i za to, že se
+              vady nevyskytnou v záruční době, která činí 24 měsíců od převzetí produktu. Nejste-li
+              spotřebitelem, odpovídám vám pouze za vady, které má produkt při převzetí. Upozorňuji,
+              že při špatném skladování kosmetických výrobků se na zboží záruka nevztahuje.
+            </li>
+            <li>
+              V případě výskytu vady, kterou nelze odstranit, nebo v případě opakovaného výskytu
+              vady anebo výskytu většího počtu vad máte právo požadovat výměnu produktu za nový
+              anebo od Smlouvy odstoupit. V případě odstranitelné vady na dosud nepoužitém produktu
+              můžete požadovat odstranění vady nebo přiměřenou slevu z ceny anebo, není-li to
+              neúměrné, požadovat výměnu produktu za nový. V případě, že neodstoupíte od Smlouvy
+              anebo neuplatníte právo na dodání nového produktu bez vad anebo opravu produktu,
+              můžete požadovat přiměřenou slevu.
+            </li>
+            <li>
+              Práva z vadného plnění vám nenáleží, pokud byste před převzetím produktu věděli, že
+              produkt má vadu, anebo byste vadu sami způsobili. Záruka a nároky z odpovědnosti za
+              vady se nevztahují na vady způsobené nesprávným užíváním produktu.
+            </li>
+            <li>
+              Reklamaci u mě uplatněte bez zbytečného odkladu po zjištění vad. O reklamaci mě můžete
+              předem informovat i e-mailem. Uvítám, pokud k reklamaci přiložíte i fakturu či jiný
+              doklad o koupi, popis reklamované závady a návrh řešení reklamace. Reklamaci vyřídím
+              bez zbytečného odkladu, nejpozději do 30 dnů, pokud se výslovně nedohodneme jinak.
+              O uplatnění a vyřízení reklamace vám poskytnu písemné potvrzení.
+            </li>
+          </ol>
+
+          <h2>Vyřizování stížností a řešení spotřebitelských sporů</h2>
+          <ol>
+            <li>
+              Máte-li k uzavřené Smlouvě, jejímu plnění či mojí činnosti nějakou stížnost,
+              kontaktujte mě prosím na elektronické adrese
+              <a href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a>.
+            </li>
+            <li>
+              Podnikám na základě živnostenského oprávnění, kontrolním orgánem je příslušný
+              živnostenský úřad, dohled nad dodržováním předpisů o ochraně spotřebitelů provádí
+              Česká obchodní inspekce. Dodržování předpisů o ochraně osobních údajů dozoruje Úřad
+              pro ochranu osobních údajů. I na tyto orgány se můžete obrátit se svými stížnostmi.
+            </li>
+            <li>
+              Pokud mezi Prodávajícím a Spotřebitelem dojde ke spotřebitelskému sporu, má
+              Spotřebitel právo na jeho mimosoudní řešení. Subjektem mimosoudního řešení podle
+              zákona č. 634/1992 Sb., o ochraně spotřebitele, je Česká obchodní inspekce. Veškeré
+              podrobnosti k mimosoudnímu řešení jsou uvedeny na stránkách České obchodní inspekce
+              <a href="https://www.coi.cz" target="_blank" rel="noreferrer">www.coi.cz</a>.
+              Spotřebitel může využít rovněž platformu pro řešení sporů online, která je zřízena
+              Evropskou komisí na adrese
+              <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noreferrer">https://ec.europa.eu/consumers/odr/</a>.
+            </li>
+          </ol>
+
+          <h2>Závěrem</h2>
+          <ol>
+            <li>
+              Smlouva je uzavírána na dobu určitou, do doby splnění povinností Prodávajícího
+              a Kupujícího ze smlouvy vyplývajících.
+            </li>
+            <li>Ochrana osobních údajů je řešena samostatným dokumentem.</li>
+            <li>
+              Vezměte, prosím, na vědomí, že jsem oprávněna tyto VOP jednostranně měnit, pro
+              Kupujícího však vždy platí text obchodních podmínek účinný v okamžiku odeslání
+              objednávky.
+            </li>
+          </ol>
+          <p><strong>Tyto VOP jsou účinné od 4. 7. 2022.</strong></p>
+        </article>
       </section>
     </main>
 <footer class="footer">
@@ -62,6 +374,11 @@
             <p class="footer-muted" style="margin-top: 1rem; max-width: 20rem; font-size: 0.875rem; line-height: 1.7">
               Gabriela Hřibová — skin specialistka. Skin Balance Method.
             </p>
+            <p class="footer-muted" style="margin-top: 1rem; max-width: 24rem; font-size: 0.875rem; line-height: 1.7">
+              Kosmetické studio Gabriely Hřibové v Šanově u Znojma. Dostupné z Mikulova, Pohořelic,
+              Miroslavi, Hrušovan nad Jevišovkou a Znojma. Diagnostika pleti, citlivá pleť, rosacea,
+              akné, biostimulace, anti-aging.
+            </p>
           </div>
           <div>
             <h4 class="eyebrow footer-muted">Navigace</h4>
@@ -70,16 +387,17 @@
               <li><a class="footer-link link-underline" href="procedury-cenik.html">Procedury &amp; ceník</a></li>
               <li><a class="footer-link link-underline" href="o-mne.html">O mně</a></li>
               <li><a class="footer-link link-underline" href="pro-klientky.html">Pro klientky</a></li>
+              <li><a class="footer-link link-underline" href="pro-kosmeticky.html">Pro kosmetičky</a></li>
               <li><a class="footer-link link-underline" href="rezervace.html">Rezervace</a></li>
             </ul>
           </div>
           <div>
             <h4 class="eyebrow footer-muted">Kontakt</h4>
             <ul>
-              <li><a class="footer-link link-underline" href="tel:605134301">605 134 301</a></li>
+              <li><a class="footer-link link-underline" href="tel:605134301">tel: 605 134 301</a></li>
+              <li><a class="footer-link link-underline" href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a></li>
               <li><a class="footer-link link-underline" href="#">Messenger</a></li>
-              <li class="footer-muted" style="font-size: 0.875rem">Studio GH, Šanov u Znojma</li>
-              <!-- E-mail: [doplnit] — Otevírací doba: [doplnit] -->
+              <li class="footer-muted" style="font-size: 0.875rem">Komenského 358<br />671 68 Šanov</li>
             </ul>
             <div class="footer-social">
               <a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram</a>
