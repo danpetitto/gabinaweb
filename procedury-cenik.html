@@ -117,7 +117,29 @@
         margin-top: 1.5rem;
         color: var(--ink);
       }
+      /* ── Vysvětlivka techniky (mimo ceníkové řádky) ─────── */
+      .method-note {
+        margin-top: 2.5rem;
+        padding: 0.25rem 0 0.25rem 1.75rem;
+        border-left: 2px solid var(--accent);
+        max-width: 40rem;
+      }
+      .method-note h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(1.125rem, 2vw, 1.3125rem);
+        letter-spacing: -0.02em;
+      }
+      .method-note p {
+        margin-top: 1rem;
+        font-size: 0.9375rem;
+        line-height: 1.75;
+        color: var(--smoke);
+      }
       @media (max-width: 640px) {
+        .method-note {
+          padding-left: 1.25rem;
+        }
         .price-head {
           flex-direction: column;
           align-items: flex-start;
@@ -515,6 +537,21 @@
                   <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
                 </div>
               </details>
+            </div>
+
+            <div class="method-note reveal" data-delay="240">
+              <h3>Mikrojehličkování</h3>
+              <p>
+                Mikrojehličkování je kontrolované narušení pleti — a právě to slovo „kontrolované“
+                je klíčové. Pracuje se dvěma mechanismy najednou. Pleť na mechanické narušení
+                reaguje spuštěním vlastních opravných procesů. A zároveň se otevře cesta pro séra,
+                která díky mikrokanálkům proniknou přesně tam, kam potřebujeme.
+              </p>
+              <p>
+                Regenerační varianta vrací pleti kondici a kapacitu. Buduje základ, na kterém
+                později může stát biostimulace. A funguje i sama o sobě: pleť po ní působí svěžeji,
+                vitálněji, jako by se nadechla.
+              </p>
             </div>
           </div>
         </div>
