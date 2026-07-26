@@ -117,29 +117,7 @@
         margin-top: 1.5rem;
         color: var(--ink);
       }
-      /* ── Vysvětlivka techniky (mimo ceníkové řádky) ─────── */
-      .method-note {
-        margin-top: 2.5rem;
-        padding: 0.25rem 0 0.25rem 1.75rem;
-        border-left: 2px solid var(--accent);
-        max-width: 40rem;
-      }
-      .method-note h3 {
-        margin: 0;
-        font-family: var(--font-display);
-        font-size: clamp(1.125rem, 2vw, 1.3125rem);
-        letter-spacing: -0.02em;
-      }
-      .method-note p {
-        margin-top: 1rem;
-        font-size: 0.9375rem;
-        line-height: 1.75;
-        color: var(--smoke);
-      }
       @media (max-width: 640px) {
-        .method-note {
-          padding-left: 1.25rem;
-        }
         .price-head {
           flex-direction: column;
           align-items: flex-start;
@@ -172,7 +150,7 @@
       <div class="nav-mobile">
         <nav>
           <a data-nav="skin-balance-method.html" href="skin-balance-method.html">Skin Balance Method</a>
-          <a data-nav="procedury-cenik.html" href="procedury-cenik.html">Procedury &amp; ceník</a>
+          <a data-nav="procedury-cenik.html" href="procedury-cenik.html">Ošetření &amp; ceník</a>
           <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
           <a data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
@@ -537,21 +515,34 @@
                   <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
                 </div>
               </details>
-            </div>
 
-            <div class="method-note reveal" data-delay="240">
-              <h3>Mikrojehličkování</h3>
-              <p>
-                Mikrojehličkování je kontrolované narušení pleti — a právě to slovo „kontrolované“
-                je klíčové. Pracuje se dvěma mechanismy najednou. Pleť na mechanické narušení
-                reaguje spuštěním vlastních opravných procesů. A zároveň se otevře cesta pro séra,
-                která díky mikrokanálkům proniknou přesně tam, kam potřebujeme.
-              </p>
-              <p>
-                Regenerační varianta vrací pleti kondici a kapacitu. Buduje základ, na kterém
-                později může stát biostimulace. A funguje i sama o sobě: pleť po ní působí svěžeji,
-                vitálněji, jako by se nadechla.
-              </p>
+              <details class="price-item reveal" data-delay="240">
+                <summary>
+                  <div class="price-head">
+                    <h3>Mikrojehličkování — regenerace</h3>
+                    <div class="price-meta">
+                      <span class="price-amount">2 600 Kč</span>
+                      <span class="price-time">75 minut</span>
+                    </div>
+                  </div>
+                  <span class="price-toggle" aria-hidden="true">+</span>
+                </summary>
+                <div class="price-body">
+                  <p>
+                    Mikrojehličkování je kontrolované narušení pleti — a právě to slovo
+                    „kontrolované“ je klíčové. Pracuje se dvěma mechanismy najednou. Pleť na
+                    mechanické narušení reaguje spuštěním vlastních opravných procesů. A zároveň se
+                    otevře cesta pro séra, která díky mikrokanálkům proniknou přesně tam, kam
+                    potřebujeme.
+                  </p>
+                  <p>
+                    Regenerační varianta vrací pleti kondici a kapacitu. Buduje základ, na kterém
+                    později může stát biostimulace. A funguje i sama o sobě: pleť po ní působí
+                    svěžeji, vitálněji, jako by se nadechla.
+                  </p>
+                  <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                </div>
+              </details>
             </div>
           </div>
         </div>
@@ -693,6 +684,34 @@
                       v návaznosti. Stavíme péči v čase, ne v jedné návštěvě.
                     </p>
                     <p>Provádí se pouze v období říjen–duben.</p>
+                    <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
+                  </div>
+                </details>
+
+                <details class="price-item reveal" data-delay="320">
+                  <summary>
+                    <div class="price-head">
+                      <h3>Mikrojehličkování — biostimulace</h3>
+                      <div class="price-meta">
+                        <span class="price-amount">2 600 Kč</span>
+                        <span class="price-time">75 minut</span>
+                      </div>
+                    </div>
+                    <span class="price-toggle" aria-hidden="true">+</span>
+                  </summary>
+                  <div class="price-body">
+                  <p>
+                      Mikrojehličkování je kontrolované narušení pleti — a právě to slovo
+                      „kontrolované“ je klíčové. Pracuje se dvěma mechanismy najednou. Pleť na
+                      mechanické narušení reaguje spuštěním vlastních opravných procesů. A zároveň se
+                      otevře cesta pro séra, která díky mikrokanálkům proniknou přesně tam, kam
+                      potřebujeme.
+                    </p>
+                    <p>
+                      Biostimulační varianta pracuje s aktivními látkami, které pleť cíleně vedou
+                      k tvorbě nového kolagenu. Má smysl pro stabilní pleť s funkční bariérou —
+                      teprve ta dokáže na stimulaci skutečně odpovědět.
+                    </p>
                     <a class="link-underline price-order" href="rezervace.html">Objednat →</a>
                   </div>
                 </details>

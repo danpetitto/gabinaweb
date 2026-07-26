@@ -603,8 +603,15 @@ main {
   margin-top: 2.5rem;
 }
 
-/* ── Headings — zlatý akcent jen na hlavních nadpisech ── */
-h1 {
+/* ── Headings — zlatý akcent jen na hlavních nadpisech ──
+   h1        … hero + page-hero + jednoduché stránky
+   .final h2 … velký závěrečný nadpis sekce CTA
+   .footer-cta h2 … velký nadpis v patičce
+   Podnadpisy sekcí (.h2), karty (.cell h3) a kroky (.step h3)
+   zůstávají v --ink. */
+h1,
+.final h2,
+.footer-cta h2 {
   color: var(--accent);
 }
 
