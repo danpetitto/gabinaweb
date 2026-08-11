@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="cs">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MEV55E5602"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied'
+      });
+      try {
+        if (localStorage.getItem('cookieConsent') === 'granted') {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+        }
+      } catch (e) {}
+      gtag('js', new Date());
+      gtag('config', 'G-MEV55E5602');
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pro kosmetičky — Školení DIBI Milano — Studio GH</title>
-    <meta name="description" content="Školení DIBI Milano pro kosmetičky. Ambasadorka a trenérka značky pro Českou republiku. Diagnostika, čtení stavu pleti, výběr protokolu. Individuálně nebo v malé skupině ve Studiu GH v Šanově u Znojma." />
+    <title>Školení DIBI Milano │ Gabriela Hřibová – trenérka pro ČR</title>
+    <meta name="description" content="Individuální nebo skupinové školení DIBI Milano ve Studiu GH v Šanově u Znojma. Vedu ho jako ambasadorka a trenérka značky pro Českou republiku." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -178,12 +197,13 @@
           <div class="footer-col-2">
             <p class="footer-brand">Studio<span class="text-accent"> GH</span></p>
             <p class="footer-muted" style="margin-top: 1rem; max-width: 20rem; font-size: 0.875rem; line-height: 1.7">
-              Gabriela Hřibová — skin specialistka. Skin Balance Method.
+              Studio GH – Gabriela Hřibová, skin specialistka. Skin Balance Method.
             </p>
             <p class="footer-muted" style="margin-top: 1rem; max-width: 24rem; font-size: 0.875rem; line-height: 1.7">
-              Kosmetické studio Gabriely Hřibové v Šanově u Znojma. Dostupné z Mikulova, Pohořelic,
-              Miroslavi, Hrušovan nad Jevišovkou a Znojma. Diagnostika pleti, citlivá pleť, rosacea,
-              akné, biostimulace, anti-aging.
+              Kosmetické studio v Šanově u Znojma. Dostupné z Hrušovan nad Jevišovkou,
+              Hevlína, Drnholce, Březí u Mikulova, Mikulova, Pohořelic, Miroslavi a
+              Znojma. Diagnostika pleti, citlivá pleť, rosacea, akné v dospělosti,
+              mikroneedling, biostimulace, anti-aging.
             </p>
           </div>
           <div>
@@ -221,5 +241,6 @@
       </div>
     </footer>
     <script src="js/main.js"></script>
+    <script src="js/cookie-consent.js"></script>
   </body>
 </html>

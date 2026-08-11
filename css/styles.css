@@ -979,3 +979,42 @@ h1,
 .italic {
   font-style: italic;
 }
+
+/* ── Cookie consent lišta ── */
+.cookie-bar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 90;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem 2.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--cloud);
+  border-top: 1px solid var(--sand);
+  box-shadow: 0 -12px 32px rgba(84, 74, 74, 0.08);
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.45s var(--ease-soft), transform 0.45s var(--ease-soft);
+}
+.cookie-bar.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.cookie-bar-text {
+  max-width: 34rem;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  color: var(--smoke);
+}
+.cookie-bar-text a {
+  color: var(--ink);
+}
+.cookie-bar-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
