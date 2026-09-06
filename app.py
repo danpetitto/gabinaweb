@@ -9,6 +9,7 @@ volume, lokálně ./instance), aby přežila redeploy.
 """
 from __future__ import annotations
 
+import html as html_lib
 import os
 import re
 import secrets
@@ -184,8 +185,24 @@ def sanitize_html(raw: str) -> str:
     return cleaned.replace("<a ", '<a rel="noopener noreferrer" ')
 
 
-def strip_tags(html: str) -> str:
-    return re.sub(r"\s+", " ", bleach.clean(html or "", tags=[], strip=True)).strip()
+def strip_tags(markup: str) -> str:
+    """Čistý text pro perex: pryč tagy, pak dekódovat entity (&nbsp; apod.)."""
+    text = bleach.clean(markup or "", tags=[], strip=True)
+    text = html_lib.unescape(text).replace("\u00a0", " ")
+    return re.sub(r"\s+", " ", text).strip()
+
+
+# Jednopísmenné předložky a spojky — po nich nezalomitelná mezera zůstává.
+_NBSP_KEEP = re.compile("((?:^|[\\s>(\u00a0])[ksvzouaiKSVZOUAI])\u00a0")
+
+
+def normalize_nbsp(markup: str) -> str:
+    """&nbsp; mezi běžnými slovy rozbíjí zalamování řádků — nahradí je
+    obyčejnou mezerou; ponechá je jen po jednopísmenných předložkách."""
+    text = (markup or "").replace("&nbsp;", "\u00a0")
+    text = _NBSP_KEEP.sub(lambda m: m.group(1) + "\x00", text)
+    text = text.replace("\u00a0", " ")
+    return text.replace("\x00", "\u00a0")
 
 
 def login_required(view):
@@ -224,6 +241,25 @@ def record_attempt(ip: str) -> None:
     )
 
 
+def migrate_normalize_articles() -> None:
+    """Jednorázová (idempotentní) normalizace &nbsp; v existujících článcích."""
+    db = sqlite3.connect(DB_PATH)
+    rows = db.execute("SELECT id, body, excerpt FROM articles").fetchall()
+    for aid, body, excerpt in rows:
+        new_body = normalize_nbsp(body)
+        new_excerpt = strip_tags(excerpt)
+        if new_body != body or new_excerpt != excerpt:
+            db.execute(
+                "UPDATE articles SET body = ?, excerpt = ? WHERE id = ?",
+                (new_body, new_excerpt, aid),
+            )
+    db.commit()
+    db.close()
+
+
+migrate_normalize_articles()
+
+
 # --------------------------------------------------------------------------- #
 # Statický web (kořen repa)
 # --------------------------------------------------------------------------- #
@@ -234,7 +270,7 @@ def home():
 
 @app.route("/<page>.html")
 def static_page(page: str):
-    if page == "pro-klientky":
+    if page in {"pro-klientky", "blog"}:
         return redirect(url_for("feed"), 301)
     name = f"{page}.html"
     if name in STATIC_PAGES:
@@ -258,9 +294,9 @@ def uploaded_file(name: str):
 
 
 # --------------------------------------------------------------------------- #
-# Blog — veřejné routy (pod /pro-klientky)
+# Blog — veřejné routy
 # --------------------------------------------------------------------------- #
-@app.route("/pro-klientky")
+@app.route("/blog")
 def feed():
     db = get_db()
     articles = db.execute(
@@ -269,7 +305,18 @@ def feed():
     return render_template("feed.html", articles=articles)
 
 
+# Staré adresy sekce Pro klientky → /blog
+@app.route("/pro-klientky")
+def pro_klientky_redirect():
+    return redirect(url_for("feed"), 301)
+
+
 @app.route("/pro-klientky/<slug>")
+def pro_klientky_article_redirect(slug: str):
+    return redirect(url_for("article", slug=slug), 301)
+
+
+@app.route("/blog/<slug>")
 def article(slug: str):
     db = get_db()
     row = db.execute(
@@ -366,7 +413,7 @@ def _save_article(aid: int | None):
         flash("Titulek je povinný.", "error")
         return redirect(request.url)
 
-    body = sanitize_html(request.form.get("body", ""))
+    body = sanitize_html(normalize_nbsp(request.form.get("body", "")))
     excerpt = (request.form.get("excerpt") or "").strip()
     if not excerpt:
         excerpt = strip_tags(body)[:200]

@@ -31,7 +31,10 @@
   }
 
   // ── Aktivní položka v navigaci podle URL ──
-  const path = window.location.pathname.split("/").pop() || "index.html";
+  let path = window.location.pathname.split("/").pop() || "index.html";
+  if (/^\/blog(\/|$)/.test(window.location.pathname)) {
+    path = "blog"; // feed i detail článku zvýrazňují „Blog"
+  }
   document.querySelectorAll("[data-nav]").forEach((el) => {
     if (el.getAttribute("data-nav") === path) {
       el.classList.add("active");
