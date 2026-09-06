@@ -1,46 +1,47 @@
-# Studio GH — Skin Balance Method (statický web)
+# Studio GH — web + blog
 
-Čistý HTML/CSS/JS web. Žádný build, žádné závislosti.
-
-## Jak rozjet
-
-Otevři `index.html` v prohlížeči. Hotovo.
-
-Pokud chceš lokální server (kvůli relativním cestám se to chová líp):
-
-```bash
-# Python
-python3 -m http.server 8000
-# pak http://localhost:8000
-
-# nebo Node
-npx serve
-```
+Statické stránky (HTML/CSS/JS) + blog s adminem (Flask + SQLite), vše servíruje
+jedna Flask aplikace. Deploy na Railway jedním pushem na `main`.
 
 ## Struktura
 
 ```
-index.html                    úvodní stránka (10 sekcí dle briefu)
-skin-balance-method.html      /skin-balance-method  (text dodá Gabriela)
-procedury-cenik.html          /procedury-cenik      (ceník dodá Gabriela)
-o-mne.html                    /o-mne                (text dodá Gabriela)
-pro-klientky.html             /pro-klientky         (rozcestník)
-rezervace.html                /rezervace            (formulář — placeholder)
-obchodni-podminky.html        právní
-ochrana-osobnich-udaju.html   GDPR
-404.html                      chybová stránka
-css/styles.css                celý design system
+app.py                        Flask — servíruje statické stránky + blog + admin
+index.html, o-mne.html, …     statické stránky webu (kořen repa)
+templates/                    šablony blogu (feed, článek, login, admin)
+css/styles.css                design system webu
+css/blog.css                  styly blogu (načítá se po styles.css)
 js/main.js                    header, mobilní menu, scroll reveal
+js/cookie-consent.js          cookie lišta (GA4 Consent Mode v2)
+js/editor.js                  Quill editor v adminu
+static/                       obrázky a PDF webu
+instance/                     SQLite + uploady (negitováno; v produkci BLOG_DATA_DIR)
 ```
 
-## Co je potřeba doplnit
+## URL
 
-- **Fotky** — místo šedých placeholderů (`.ph`) vlož `<img>`. Třída zůstává kvůli poměru stran.
-- **Texty podstránek** — dodá Gabriela (SBM, ceník, o mně).
-- **E-mail + otevírací doba** — v patičce označeno komentářem `[doplnit]`.
-- **Facebook / Messenger odkaz** — zatím `#`.
-- **Lead magnet formulář** (sekce 9) a **rezervační formulář** — `action="#"`, napojit na Mailerlite / Webnode / Reservio.
-- **Kostky specializací** (sekce 5) zatím nevedou nikam — až budou podstránky, obal je do `<a href="...">`.
+- `/` a `/<stranka>.html` — statické stránky
+- `/pro-klientky` — blog (feed), `/pro-klientky/<slug>` — článek
+- `/admin` — správa článků (heslo), `/uploads/<soubor>` — nahrané obrázky
+
+## Lokální spuštění
+
+```bash
+python3 -m venv venv && source venv/bin/activate
+pip install -r requirements.txt
+cp .env.example .env               # doplň SECRET_KEY a ADMIN_PASSWORD(_HASH)
+flask --app app run                # http://localhost:5000
+```
+
+## Produkce (Railway)
+
+Start příkaz je v `railway.json` (gunicorn). V Railway nastav proměnné:
+
+- `SECRET_KEY` — `python3 -c "import secrets; print(secrets.token_hex(32))"`
+- `ADMIN_PASSWORD_HASH` — `python3 set_password.py` (nebo dočasně `ADMIN_PASSWORD`)
+- `FLASK_ENV=production`
+- `BLOG_DATA_DIR=/data` + **volume mountnutý na `/data`** — jinak se články
+  a nahrané fotky ztratí při každém redeployi!
 
 ## Barvy
 
@@ -55,4 +56,3 @@ js/main.js                    header, mobilní menu, scroll reveal
 | wine | #6E3B3B | patička |
 
 Vše je v `:root` v `css/styles.css` — změníš na jednom místě.
-# gabinaweb

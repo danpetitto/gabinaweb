@@ -42,7 +42,7 @@
         <div class="field">
           <label>Titulní fotka</label>
           {% if a and a['cover'] %}
-            <img class="cover-preview" id="cover-preview" src="{{ url_for('static', filename='uploads/' ~ a['cover']) }}" alt="" />
+            <img class="cover-preview" id="cover-preview" src="{{ url_for('uploaded_file', name=a['cover']) }}" alt="" />
           {% else %}
             <img class="cover-preview" id="cover-preview" style="display:none" alt="" />
           {% endif %}
@@ -70,5 +70,5 @@
   const CSRF = "{{ csrf_token() }}";
   const INITIAL = {{ (a['body'] if a else '') | tojson }};
 </script>
-<script src="{{ url_for('static', filename='js/editor.js') }}"></script>
+<script src="{{ '/js/editor.js' }}"></script>
 {% endblock %}

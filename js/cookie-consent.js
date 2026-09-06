@@ -19,7 +19,7 @@
   bar.innerHTML =
     '<p class="cookie-bar-text">' +
     "Používáme cookies k měření návštěvnosti (Google Analytics). " +
-    'Nezbytné cookies jsou aktivní vždy. <a class="link-underline" href="ochrana-osobnich-udaju.html">Více informací</a>' +
+    'Nezbytné cookies jsou aktivní vždy. <a class="link-underline" href="/ochrana-osobnich-udaju.html">Více informací</a>' +
     "</p>" +
     '<div class="cookie-bar-actions">' +
     '<button type="button" class="btn btn-sm" data-consent="granted">Přijmout vše</button>' +

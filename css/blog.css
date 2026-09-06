@@ -1,0 +1,142 @@
+/* Studio GH — blog (feed, článek, admin). Načítá se PO styles.css,
+   design tokens webu doplňuje o pár vlastních. */
+:root {
+  --white: #ffffff;
+  --ink-soft: var(--smoke);
+  --sand-dark: #cfbfa5;
+  --accent-dark: #c39c66;
+  --error: #b4543c;
+  --ok: #5c7a52;
+  --radius: 2px;
+  --shadow: 0 1px 3px rgba(84, 74, 74, 0.06), 0 8px 24px rgba(84, 74, 74, 0.05);
+}
+
+/* ---------- Feed ---------- */
+.feed-grid {
+  display: grid;
+  gap: 2.5rem;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px) { .feed-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 960px) { .feed-grid { grid-template-columns: repeat(3, 1fr); } }
+
+.card {
+  display: flex; flex-direction: column; background: var(--white);
+  border: 1px solid var(--sand); border-radius: var(--radius); overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover { transform: translateY(-4px); box-shadow: var(--shadow); }
+.card-media { aspect-ratio: 3 / 2; overflow: hidden; background: var(--sand); }
+.card-media img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+.card:hover .card-media img { transform: scale(1.04); }
+.card-media-empty {
+  width: 100%; height: 100%; display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 2rem; color: var(--sand-dark);
+}
+.card-body { padding: 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; flex: 1; }
+.card-date { font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); }
+.card-title { font-family: var(--font-display); font-size: 1.35rem; line-height: 1.2; letter-spacing: -0.02em; }
+.card-excerpt { font-size: 0.92rem; color: var(--ink-soft); flex: 1; }
+.card-more { font-size: 0.85rem; color: var(--accent); margin-top: auto; }
+
+.empty-state { text-align: center; padding: 5rem 1rem 7rem; color: var(--ink-soft); }
+.empty-state h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); color: var(--ink); margin-bottom: 0.75rem; }
+
+/* ---------- Článek ---------- */
+.article-wrap { max-width: 44rem; margin-inline: auto; padding-block: 3rem 6rem; overflow-wrap: break-word; }
+.article-wrap h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+.article-cover { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: var(--radius); margin-bottom: 2.5rem; background: var(--sand); }
+.article-meta { display: flex; gap: 1rem; align-items: center; margin-bottom: 1rem; }
+.article-body { font-size: 1.05rem; line-height: 1.85; margin-top: 2rem; color: var(--smoke); }
+.article-body > * + * { margin-top: 1.4rem; }
+.article-body h2, .article-body h3, .article-body h4 {
+  font-family: var(--font-display); color: var(--ink); letter-spacing: -0.02em; margin-top: 2.5rem;
+}
+.article-body h2 { font-size: clamp(1.375rem, 2.5vw, 1.875rem); }
+.article-body h3 { font-size: 1.25rem; }
+.article-body img { max-width: 100%; height: auto; border-radius: var(--radius); }
+.article-body figure { margin-block: 2rem; }
+.article-body figcaption { font-size: 0.85rem; color: var(--ink-soft); text-align: center; margin-top: 0.6rem; }
+.article-body blockquote {
+  border-left: 2px solid var(--accent); padding-left: 1.5rem;
+  font-style: italic; color: var(--ink-soft);
+}
+.article-body a { color: var(--ink); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+.article-body ul, .article-body ol { padding-left: 1.5rem; }
+.article-body pre { background: var(--ink); color: var(--cloud); padding: 1.25rem; border-radius: var(--radius); overflow-x: auto; font-size: 0.85rem; }
+.back-link { font-size: 0.9rem; color: var(--accent); display: inline-block; margin-bottom: 2rem; }
+
+/* ---------- Auth ---------- */
+.auth-wrap { min-height: 70vh; display: grid; place-items: center; padding: 2rem; }
+.auth-card {
+  width: 100%; max-width: 24rem; background: var(--white);
+  border: 1px solid var(--sand); border-radius: var(--radius); padding: 2.5rem; box-shadow: var(--shadow);
+}
+.auth-card h1 { font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 0.5rem; }
+.auth-card p { color: var(--ink-soft); font-size: 0.9rem; margin-bottom: 1.75rem; }
+
+/* ---------- Formuláře (admin) ---------- */
+.field { margin-bottom: 1.5rem; }
+.field label { display: block; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.5rem; }
+.field input[type="text"], .field input[type="password"], .field textarea {
+  width: 100%; padding: 0.85rem 1rem; font-family: inherit; font-size: 0.95rem;
+  background: var(--cloud); border: 1px solid var(--sand); border-radius: var(--radius);
+  color: var(--ink); transition: border-color 0.2s;
+}
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--accent); }
+.field textarea { resize: vertical; min-height: 4rem; }
+.field-inline { display: flex; align-items: center; gap: 0.6rem; }
+.field-inline input { width: auto; }
+.field-inline label { margin: 0; text-transform: none; letter-spacing: 0; font-size: 0.95rem; color: var(--ink); }
+
+/* ---------- Flash ---------- */
+.flash { padding: 0.85rem 1.25rem; border-radius: var(--radius); font-size: 0.9rem; margin-bottom: 1.25rem; border: 1px solid; }
+.flash-error { background: color-mix(in srgb, var(--error) 8%, var(--white)); border-color: var(--error); color: var(--error); }
+.flash-ok { background: color-mix(in srgb, var(--ok) 10%, var(--white)); border-color: var(--ok); color: var(--ok); }
+
+/* ---------- Admin ---------- */
+.btn-accent { background: var(--accent); border-color: var(--accent); color: var(--white); }
+.btn-accent:hover { background: var(--accent-dark); border-color: var(--accent-dark); color: var(--white); }
+.btn-danger { background: transparent; border-color: var(--error); color: var(--error); }
+.btn-danger:hover { background: var(--error); color: var(--white); }
+.btn-sm { padding: 0.5rem 1rem; font-size: 0.82rem; }
+
+.admin-bar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: 1.5rem; border-bottom: 1px solid var(--sand); margin-bottom: 2.5rem;
+  flex-wrap: wrap; gap: 1rem;
+}
+.admin-bar-links { display: flex; gap: 1.5rem; align-items: center; font-size: 0.9rem; }
+.admin-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+.admin-head h1 { font-family: var(--font-display); }
+
+.table { width: 100%; border-collapse: collapse; background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); overflow: hidden; }
+.table th, .table td { text-align: left; padding: 1rem 1.25rem; border-bottom: 1px solid var(--sand); font-size: 0.92rem; }
+.table th { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); font-weight: 500; }
+.table tr:last-child td { border-bottom: none; }
+.table tr:hover td { background: var(--cloud); }
+.badge { font-size: 0.72rem; padding: 0.2rem 0.6rem; border-radius: 99px; letter-spacing: 0.05em; }
+.badge-pub { background: color-mix(in srgb, var(--ok) 14%, var(--white)); color: var(--ok); }
+.badge-draft { background: var(--sand); color: var(--ink-soft); }
+.row-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+
+.editor-grid { display: grid; gap: 2rem; grid-template-columns: 1fr; }
+@media (min-width: 1000px) { .editor-grid { grid-template-columns: 1fr 18rem; align-items: start; } }
+.editor-side { background: var(--white); border: 1px solid var(--sand); border-radius: var(--radius); padding: 1.5rem; position: sticky; top: 6rem; }
+.cover-preview { width: 100%; aspect-ratio: 3/2; object-fit: cover; border-radius: var(--radius); margin-bottom: 1rem; background: var(--sand); }
+
+/* Quill overrides to match theme */
+.ql-toolbar.ql-snow, .ql-container.ql-snow { border-color: var(--sand); }
+.ql-toolbar.ql-snow { border-radius: var(--radius) var(--radius) 0 0; background: var(--white); }
+.ql-container.ql-snow { border-radius: 0 0 var(--radius) var(--radius); background: var(--white); min-height: 26rem; font-family: var(--font-body); font-size: 1.05rem; }
+.ql-editor { line-height: 1.8; }
+.ql-snow .ql-stroke { stroke: var(--ink-soft); }
+.ql-snow .ql-fill { fill: var(--ink-soft); }
+.ql-snow.ql-toolbar button:hover .ql-stroke { stroke: var(--accent); }
+
+/* Admin stránky nepoužívají scroll-reveal — obsah je viditelný hned */

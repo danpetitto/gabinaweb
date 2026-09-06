@@ -1,7 +1,11 @@
-"""Studio GH — Blog & admin.
+"""Studio GH — web + blog.
 
-Single-file Flask app: public feed + article pages, password-protected admin
-for CRUD on articles with WYSIWYG editor and local image uploads.
+Jedna Flask aplikace servíruje statické stránky webu (kořen repa) a blog
+pod /pro-klientky: veřejný feed + detaily článků, admin chráněný heslem
+s WYSIWYG editorem a lokálním uploadem obrázků.
+
+Data (SQLite + uploady) žijí v adresáři BLOG_DATA_DIR (na Railway mount
+volume, lokálně ./instance), aby přežila redeploy.
 """
 from __future__ import annotations
 
@@ -24,6 +28,7 @@ from flask import (
     redirect,
     render_template,
     request,
+    send_from_directory,
     session,
     url_for,
 )
@@ -36,11 +41,25 @@ from werkzeug.utils import secure_filename
 load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent
-DB_PATH = BASE_DIR / "instance" / "blog.db"
-UPLOAD_DIR = BASE_DIR / "static" / "uploads"
+DATA_DIR = Path(os.environ.get("BLOG_DATA_DIR", BASE_DIR / "instance"))
+DB_PATH = DATA_DIR / "blog.db"
+UPLOAD_DIR = DATA_DIR / "uploads"
 ALLOWED_EXT = {"png", "jpg", "jpeg", "webp", "gif"}
 ALLOWED_MIME = {"image/png", "image/jpeg", "image/webp", "image/gif"}
 MAX_UPLOAD = 8 * 1024 * 1024  # 8 MB
+
+# Statické stránky webu — whitelist toho, co se smí servírovat z kořene repa.
+STATIC_PAGES = {
+    "index.html",
+    "skin-balance-method.html",
+    "procedury-cenik.html",
+    "o-mne.html",
+    "pro-kosmeticky.html",
+    "rezervace.html",
+    "obchodni-podminky.html",
+    "ochrana-osobnich-udaju.html",
+    "404.html",
+}
 
 # HTML allowed out of the WYSIWYG editor. Anything else is stripped.
 ALLOWED_TAGS = [
@@ -65,7 +84,7 @@ def get_secret_key() -> str:
     return key
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder="static", static_url_path="/static")
 app.config.update(
     SECRET_KEY=get_secret_key(),
     MAX_CONTENT_LENGTH=MAX_UPLOAD,
@@ -119,6 +138,9 @@ def init_db() -> None:
     )
     db.commit()
     db.close()
+
+
+init_db()
 
 
 # --------------------------------------------------------------------------- #
@@ -203,9 +225,42 @@ def record_attempt(ip: str) -> None:
 
 
 # --------------------------------------------------------------------------- #
-# Public routes
+# Statický web (kořen repa)
 # --------------------------------------------------------------------------- #
 @app.route("/")
+def home():
+    return send_from_directory(BASE_DIR, "index.html")
+
+
+@app.route("/<page>.html")
+def static_page(page: str):
+    if page == "pro-klientky":
+        return redirect(url_for("feed"), 301)
+    name = f"{page}.html"
+    if name in STATIC_PAGES:
+        return send_from_directory(BASE_DIR, name)
+    abort(404)
+
+
+@app.route("/css/<path:filename>")
+def css_files(filename: str):
+    return send_from_directory(BASE_DIR / "css", filename)
+
+
+@app.route("/js/<path:filename>")
+def js_files(filename: str):
+    return send_from_directory(BASE_DIR / "js", filename)
+
+
+@app.route("/uploads/<name>")
+def uploaded_file(name: str):
+    return send_from_directory(UPLOAD_DIR, secure_filename(name))
+
+
+# --------------------------------------------------------------------------- #
+# Blog — veřejné routy (pod /pro-klientky)
+# --------------------------------------------------------------------------- #
+@app.route("/pro-klientky")
 def feed():
     db = get_db()
     articles = db.execute(
@@ -214,7 +269,7 @@ def feed():
     return render_template("feed.html", articles=articles)
 
 
-@app.route("/clanek/<slug>")
+@app.route("/pro-klientky/<slug>")
 def article(slug: str):
     db = get_db()
     row = db.execute(
@@ -335,10 +390,6 @@ def _save_article(aid: int | None):
         )
         flash("Článek vytvořen.", "ok")
     else:
-        existing = db.execute(
-            "SELECT slug FROM articles WHERE id = ?", (aid,)
-        ).fetchone()
-        slug = existing["slug"]
         db.execute(
             """UPDATE articles
                SET title=?, excerpt=?, body=?, cover=?, published=?, updated_at=?
@@ -406,7 +457,7 @@ def admin_upload():
     saved = _save_image(file)
     if not saved:
         return {"error": "invalid image"}, 400
-    return {"url": url_for("static", filename=f"uploads/{saved}")}
+    return {"url": url_for("uploaded_file", name=saved)}
 
 
 @app.errorhandler(404)
@@ -421,5 +472,4 @@ def too_large(_e):
 
 
 if __name__ == "__main__":
-    init_db()
     app.run(debug=os.environ.get("FLASK_ENV") != "production", port=5000)
