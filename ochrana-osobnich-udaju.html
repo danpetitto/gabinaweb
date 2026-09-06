@@ -28,6 +28,102 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
+    <style>
+      /* Právní text — dlouhý dokument, čitelná typografie v duchu webu */
+      .legal {
+        max-width: 46rem;
+        overflow-wrap: break-word;
+      }
+      .legal h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.375rem, 2.5vw, 1.875rem);
+        letter-spacing: -0.04em;
+        margin-top: 3.5rem;
+      }
+      .legal p,
+      .legal li {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--smoke);
+        margin-top: 1.25rem;
+      }
+      .legal ol,
+      .legal ul {
+        padding-left: 1.5rem;
+      }
+      .legal ol li,
+      .legal ul li {
+        margin-top: 0.75rem;
+      }
+      .legal a {
+        color: var(--ink);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        word-break: break-word;
+      }
+      .legal .legal-meta {
+        margin-top: 2rem;
+        border: 1px solid var(--sand);
+        border-radius: 2px;
+        background: var(--paper);
+        padding: 2rem;
+      }
+      .legal .legal-meta p {
+        margin-top: 0.5rem;
+      }
+      .legal .legal-meta p:first-child {
+        margin-top: 0;
+      }
+      /* Tabulka účelů zpracování — na mobilu scrolluje uvnitř wrapperu */
+      .legal .table-wrap {
+        margin-top: 1.5rem;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        border: 1px solid var(--sand);
+        border-radius: 2px;
+        background: var(--paper);
+      }
+      .legal table {
+        width: 100%;
+        min-width: 34rem;
+        border-collapse: collapse;
+      }
+      .legal th,
+      .legal td {
+        text-align: left;
+        vertical-align: top;
+        padding: 0.875rem 1.25rem;
+        border-bottom: 1px solid var(--sand);
+        font-size: 0.9375rem;
+        line-height: 1.6;
+        color: var(--smoke);
+      }
+      .legal thead th {
+        font-family: var(--font-body);
+        font-size: 0.6875rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+      }
+      .legal tbody tr:last-child td {
+        border-bottom: 0;
+      }
+      /* Mobil — menší nadpis, tap targety v patičce */
+      .page-hero h1 {
+        font-size: clamp(2.25rem, 8vw, 6rem);
+      }
+      @media (max-width: 767px) {
+        .legal .legal-meta {
+          padding: 1.5rem;
+        }
+        .footer-legal a,
+        .footer-link,
+        .footer-social a {
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+        }
+      }
+    </style>
   </head>
   <body>
 <header class="header">
@@ -41,7 +137,7 @@
           <a class="nav-link link-underline" data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a class="nav-link link-underline" data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
           <a class="nav-link link-underline" data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
-          <a class="nav-cta" href="rezervace.html">Rezervace</a>
+          <a class="nav-cta" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace</a>
         </nav>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
           <span></span><span></span>
@@ -54,7 +150,7 @@
           <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
           <a data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
-          <a class="btn" href="rezervace.html">Rezervace <span aria-hidden="true">→</span></a>
+          <a class="btn" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace <span aria-hidden="true">→</span></a>
         </nav>
       </div>
     </header>
@@ -64,10 +160,154 @@
         <h1 class="reveal" data-delay="80">Ochrana osobních údajů</h1>
       </section>
       <section class="container" style="padding-bottom:6rem">
-        <div class="reveal" style="border:1px solid var(--sand);border-radius:2px;padding:2.5rem;background:var(--paper)">
-          <p class="eyebrow">Připravujeme</p>
-          <p class="lead" style="margin-top:1rem;font-size:1rem">Zásady zpracování osobních údajů (GDPR) se doplní.</p>
-        </div>
+        <article class="legal">
+          <h2>1. Kdo je správcem osobních údajů</h2>
+          <p>Správcem osobních údajů je:</p>
+          <div class="legal-meta">
+            <p><strong>Gabriela Hřibová</strong></p>
+            <p>IČO: 71832173</p>
+            <p>Sídlo: Hevlín 271, 671 69 Hevlín</p>
+            <p>Provozovna: Komenského 358, 671 68 Šanov</p>
+            <p>E-mail: <a href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a></p>
+          </div>
+          <p>V otázkách ochrany osobních údajů se na mě můžete obrátit na výše uvedeném e-mailu.</p>
+
+          <h2>2. Jaké osobní údaje zpracovávám</h2>
+          <p>V závislosti na tom, jak se mnou jste v kontaktu, zpracovávám tyto údaje:</p>
+          <ul>
+            <li>
+              <strong>Kontaktní a rezervační formulář na webu:</strong> jméno a příjmení, e-mail,
+              telefonní číslo, případně zpráva nebo preferovaný termín.
+            </li>
+            <li>
+              <strong>Rezervační systém MyFox:</strong> jméno a příjmení, e-mail, telefonní číslo,
+              zvolené ošetření a termín.
+            </li>
+            <li>
+              <strong>Klientská karta v systému MyFox:</strong> anamnéza, výsledky diagnostiky
+              a měření pleti (např. z Woodovy lampy či jiných diagnostických nástrojů) a záznamy
+              o průběhu jednotlivých ošetření. Tyto údaje mohou vypovídat o zdravotním stavu,
+              a řadí se proto mezi zvláštní kategorii osobních údajů podle čl. 9 GDPR.
+              <p>Systém MyFox zpracovává výše uvedené údaje jako zpracovatel na můj pokyn.</p>
+            </li>
+            <li>
+              <strong>Návštěva webu:</strong> technické údaje o používání webu prostřednictvím
+              nástrojů Google Analytics a Meta Pixel (viz bod 6 – Cookies), pokud k tomu udělíte
+              souhlas.
+            </li>
+          </ul>
+          <p>Nesbírám e-maily do žádného newsletteru ani hromadné rozesílky.</p>
+
+          <h2>3. Za jakým účelem a na jakém právním základě</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">Účel</th>
+                  <th scope="col">Právní základ</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Vyřízení poptávky a rezervace termínu</td>
+                  <td>Plnění smlouvy / jednání o smlouvě (čl. 6 odst. 1 písm. b) GDPR)</td>
+                </tr>
+                <tr>
+                  <td>Poskytnutí ošetření a péče o pleť</td>
+                  <td>Plnění smlouvy (čl. 6 odst. 1 písm. b) GDPR)</td>
+                </tr>
+                <tr>
+                  <td>Vedení klientské karty – anamnéza, výsledky diagnostiky a měření pleti</td>
+                  <td>Výslovný souhlas (čl. 9 odst. 2 písm. a) GDPR), udělený při první návštěvě formou podpisu informovaného souhlasu</td>
+                </tr>
+                <tr>
+                  <td>Vedení účetnictví a daňových dokladů</td>
+                  <td>Plnění právní povinnosti (čl. 6 odst. 1 písm. c) GDPR)</td>
+                </tr>
+                <tr>
+                  <td>Vyhodnocování návštěvnosti webu (Google Analytics)</td>
+                  <td>Souhlas (čl. 6 odst. 1 písm. a) GDPR)</td>
+                </tr>
+                <tr>
+                  <td>Měření a cílení reklamy (Meta Pixel)</td>
+                  <td>Souhlas (čl. 6 odst. 1 písm. a) GDPR)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h2>4. Jak dlouho údaje uchovávám</h2>
+          <p>
+            Kontaktní a rezervační údaje uchovávám po dobu trvání naší spolupráce a dále po dobu
+            nezbytnou k ochraně případných právních nároků, nejdéle 3 roky od poslední návštěvy.
+          </p>
+          <p>
+            Klientskou kartu s anamnézou a výsledky diagnostiky uchovávám po dobu trvání naší
+            spolupráce, aby na sebe jednotlivá ošetření mohla navazovat. Uchovávání je podmíněno
+            vaším souhlasem, který můžete kdykoli odvolat; v takovém případě kartu vymažu, pokud
+            mi zákon neukládá jinak.
+          </p>
+          <p>Účetní a daňové doklady uchovávám po dobu stanovenou zákonem (typicky 10 let).</p>
+          <p>
+            Údaje z cookies a měřicích nástrojů uchovávám po dobu uvedenou u jednotlivých nástrojů
+            v cookie liště, standardně do 26 měsíců, případně do odvolání souhlasu.
+          </p>
+
+          <h2>5. Komu údaje předávám</h2>
+          <p>
+            Osobní údaje nepředávám třetím stranám za účelem jejich vlastního marketingu.
+            Ke zpracování využívám tyto zpracovatele a nástroje:
+          </p>
+          <ul>
+            <li>MyFox – rezervační systém</li>
+            <li>Google Ireland Limited – Google Analytics</li>
+            <li>Meta Platforms Ireland Limited – Meta Pixel</li>
+          </ul>
+          <p>
+            Tito poskytovatelé mohou mít sídlo mimo Evropský hospodářský prostor; předání je
+            v takovém případě zajištěno standardními smluvními doložkami nebo obdobným mechanismem
+            podle GDPR.
+          </p>
+
+          <h2>6. Cookies</h2>
+          <p>
+            Web používá cookies pro zajištění základní funkčnosti a se souhlasem i pro měření
+            návštěvnosti (Google Analytics) a reklamu (Meta Pixel). Souhlas můžete kdykoli udělit,
+            odmítnout nebo změnit prostřednictvím cookie lišty na webu.
+          </p>
+
+          <h2>7. Vaše práva</h2>
+          <p>V souvislosti se zpracováním osobních údajů máte právo:</p>
+          <ul>
+            <li>na přístup ke svým osobním údajům,</li>
+            <li>na opravu nepřesných nebo neúplných údajů,</li>
+            <li>na výmaz údajů, pokud pro to jsou splněny zákonné podmínky,</li>
+            <li>na omezení zpracování,</li>
+            <li>na přenositelnost údajů,</li>
+            <li>vznést námitku proti zpracování,</li>
+            <li>kdykoli odvolat udělený souhlas, aniž je tím dotčena zákonnost zpracování před jeho odvoláním.</li>
+          </ul>
+          <p>
+            Svá práva můžete uplatnit na e-mailu
+            <a href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a>.
+          </p>
+          <p>
+            Pokud se domníváte, že vaše osobní údaje zpracovávám v rozporu s právními předpisy,
+            máte právo podat stížnost u Úřadu pro ochranu osobních údajů
+            (<a href="https://www.uoou.cz" target="_blank" rel="noreferrer">www.uoou.cz</a>).
+          </p>
+
+          <h2>8. Zabezpečení</h2>
+          <p>
+            Osobní údaje zpracovávám s ohledem na jejich povahu tak, aby nemohlo dojít
+            k neoprávněnému nebo nahodilému přístupu k údajům, k jejich změně, zničení či ztrátě,
+            neoprávněným přenosům, k jejich neoprávněnému zpracování, jakož i k jinému zneužití.
+          </p>
+          <p>
+            Tyto zásady mohou být čas od času aktualizovány. Aktuální verze je vždy dostupná na
+            této stránce.
+          </p>
+        </article>
       </section>
     </main>
 <footer class="footer">
@@ -89,6 +329,11 @@
               Znojma. Diagnostika pleti, citlivá pleť, rosacea, akné v dospělosti,
               mikroneedling, biostimulace, anti-aging.
             </p>
+            <p class="footer-muted" style="margin-top: 1rem; max-width: 24rem; font-size: 0.875rem; line-height: 1.7">
+              Gabriela Hřibová · IČO: 71832173<br />
+              Sídlo: Hevlín 271, 671 69 Hevlín<br />
+              Provozovna: Komenského 358, 671 68 Šanov
+            </p>
           </div>
           <div>
             <h4 class="eyebrow footer-muted">Navigace</h4>
@@ -98,7 +343,7 @@
               <li><a class="footer-link link-underline" href="o-mne.html">O mně</a></li>
               <li><a class="footer-link link-underline" href="pro-klientky.html">Pro klientky</a></li>
               <li><a class="footer-link link-underline" href="pro-kosmeticky.html">Pro kosmetičky</a></li>
-              <li><a class="footer-link link-underline" href="rezervace.html">Rezervace</a></li>
+              <li><a class="footer-link link-underline" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace</a></li>
             </ul>
           </div>
           <div>
@@ -106,12 +351,12 @@
             <ul>
               <li><a class="footer-link link-underline" href="tel:605134301">tel: 605 134 301</a></li>
               <li><a class="footer-link link-underline" href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a></li>
-              <li><a class="footer-link link-underline" href="#">Messenger</a></li>
+              <li><a class="footer-link link-underline" href="https://www.facebook.com/gabriela.hribova.3#" target="_blank" rel="noreferrer">Messenger</a></li>
               <li class="footer-muted" style="font-size: 0.875rem">Komenského 358<br />671 68 Šanov</li>
             </ul>
             <div class="footer-social">
               <a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram</a>
-              <a class="link-underline" href="#" target="_blank" rel="noreferrer">Facebook</a>
+              <a class="link-underline" href="https://www.facebook.com/kosmetickestudioGabrielyHribove" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
         </div>

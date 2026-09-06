@@ -32,10 +32,11 @@
       /* Právní text — dlouhý dokument, čitelná typografie v duchu webu */
       .legal {
         max-width: 46rem;
+        overflow-wrap: break-word;
       }
       .legal h2 {
         font-family: var(--font-display);
-        font-size: clamp(1.5rem, 2.5vw, 1.875rem);
+        font-size: clamp(1.375rem, 2.5vw, 1.875rem);
         letter-spacing: -0.04em;
         margin-top: 3.5rem;
       }
@@ -66,6 +67,7 @@
         color: var(--ink);
         text-decoration: underline;
         text-underline-offset: 3px;
+        word-break: break-word;
       }
       .legal .legal-meta {
         margin-top: 2rem;
@@ -79,6 +81,22 @@
       }
       .legal .legal-meta p:first-child {
         margin-top: 0;
+      }
+      /* Mobil — menší nadpis, tap targety v patičce */
+      .page-hero h1 {
+        font-size: clamp(2.25rem, 8vw, 6rem);
+      }
+      @media (max-width: 767px) {
+        .legal .legal-meta {
+          padding: 1.5rem;
+        }
+        .footer-legal a,
+        .footer-link,
+        .footer-social a {
+          display: inline-flex;
+          align-items: center;
+          min-height: 44px;
+        }
       }
     </style>
   </head>
@@ -94,7 +112,7 @@
           <a class="nav-link link-underline" data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a class="nav-link link-underline" data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
           <a class="nav-link link-underline" data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
-          <a class="nav-cta" href="rezervace.html">Rezervace</a>
+          <a class="nav-cta" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace</a>
         </nav>
         <button class="nav-toggle" aria-label="Menu" aria-expanded="false">
           <span></span><span></span>
@@ -107,7 +125,7 @@
           <a data-nav="o-mne.html" href="o-mne.html">O mně</a>
           <a data-nav="pro-klientky.html" href="pro-klientky.html">Pro klientky</a>
           <a data-nav="pro-kosmeticky.html" href="pro-kosmeticky.html">Pro kosmetičky</a>
-          <a class="btn" href="rezervace.html">Rezervace <span aria-hidden="true">→</span></a>
+          <a class="btn" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace <span aria-hidden="true">→</span></a>
         </nav>
       </div>
     </header>
@@ -118,7 +136,7 @@
         <p class="lead reveal" data-delay="160">Všeobecné obchodní podmínky pro prodej kosmetických služeb a produktů.</p>
       </section>
       <section class="container" style="padding-bottom:6rem">
-        <article class="legal reveal">
+        <article class="legal">
           <p>
             Milí návštěvníci <a href="index.html">www.studiogh.cz</a>, právě jste se ocitli na stránce
             se všeobecnými obchodními podmínkami pro prodej kosmetických služeb a kosmetických
@@ -399,6 +417,11 @@
               Znojma. Diagnostika pleti, citlivá pleť, rosacea, akné v dospělosti,
               mikroneedling, biostimulace, anti-aging.
             </p>
+            <p class="footer-muted" style="margin-top: 1rem; max-width: 24rem; font-size: 0.875rem; line-height: 1.7">
+              Gabriela Hřibová · IČO: 71832173<br />
+              Sídlo: Hevlín 271, 671 69 Hevlín<br />
+              Provozovna: Komenského 358, 671 68 Šanov
+            </p>
           </div>
           <div>
             <h4 class="eyebrow footer-muted">Navigace</h4>
@@ -408,7 +431,7 @@
               <li><a class="footer-link link-underline" href="o-mne.html">O mně</a></li>
               <li><a class="footer-link link-underline" href="pro-klientky.html">Pro klientky</a></li>
               <li><a class="footer-link link-underline" href="pro-kosmeticky.html">Pro kosmetičky</a></li>
-              <li><a class="footer-link link-underline" href="rezervace.html">Rezervace</a></li>
+              <li><a class="footer-link link-underline" href="https://gabrielahribova.snippet.myfox.cz" target="_blank" rel="noreferrer">Rezervace</a></li>
             </ul>
           </div>
           <div>
@@ -416,12 +439,12 @@
             <ul>
               <li><a class="footer-link link-underline" href="tel:605134301">tel: 605 134 301</a></li>
               <li><a class="footer-link link-underline" href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a></li>
-              <li><a class="footer-link link-underline" href="#">Messenger</a></li>
+              <li><a class="footer-link link-underline" href="https://www.facebook.com/gabriela.hribova.3#" target="_blank" rel="noreferrer">Messenger</a></li>
               <li class="footer-muted" style="font-size: 0.875rem">Komenského 358<br />671 68 Šanov</li>
             </ul>
             <div class="footer-social">
               <a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram</a>
-              <a class="link-underline" href="#" target="_blank" rel="noreferrer">Facebook</a>
+              <a class="link-underline" href="https://www.facebook.com/kosmetickestudioGabrielyHribove" target="_blank" rel="noreferrer">Facebook</a>
             </div>
           </div>
         </div>
