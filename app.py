@@ -268,10 +268,17 @@ def home():
     return send_from_directory(BASE_DIR, "index.html")
 
 
+@app.route("/kontakt")
+def kontakt():
+    return send_from_directory(BASE_DIR, "kontakt.html")
+
+
 @app.route("/<page>.html")
 def static_page(page: str):
     if page in {"pro-klientky", "blog"}:
         return redirect(url_for("feed"), 301)
+    if page == "kontakt":
+        return redirect(url_for("kontakt"), 301)
     name = f"{page}.html"
     if name in STATIC_PAGES:
         return send_from_directory(BASE_DIR, name)

@@ -22,48 +22,72 @@
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Školení DIBI Milano │ Gabriela Hřibová – trenérka pro ČR</title>
-    <meta name="description" content="Individuální nebo skupinové školení DIBI Milano ve Studiu GH v Šanově u Znojma. Vedu ho jako ambasadorka a trenérka značky pro Českou republiku." />
+    <title>Kontakt — Studio GH</title>
+    <meta name="description" content="Kontakt na Studio GH — Gabriela Hřibová, kosmetické studio Šanov u Znojma. Telefon, e-mail, sociální sítě a adresa provozovny." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="css/styles.css" />
     <style>
-      /* Reálné fotky se chovají stejně jako původní .ph placeholdery */
-      .photo-frame {
-        width: 100%;
-        overflow: hidden;
-        background: #ece2d6;
+      /* Kontaktní karty — v duchu design systemu webu */
+      .contact-grid {
+        display: grid;
+        gap: 1.5rem;
+        grid-template-columns: 1fr;
       }
-      .photo-frame img {
-        display: block;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+      @media (min-width: 768px) {
+        .contact-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
       }
-      .photo-frame.rounded { border-radius: 1rem; }
-      .photo-frame.tall { aspect-ratio: 3 / 4; }
+      .contact-card {
+        border: 1px solid var(--sand);
+        border-radius: 2px;
+        background: var(--paper);
+        padding: 2.5rem;
+      }
+      .contact-card h2 {
+        font-family: var(--font-display);
+        font-size: clamp(1.375rem, 2.5vw, 1.75rem);
+        letter-spacing: -0.03em;
+        margin-top: 1rem;
+      }
+      .contact-card p,
+      .contact-card li {
+        color: var(--smoke);
+        line-height: 1.8;
+        margin-top: 0.5rem;
+        overflow-wrap: break-word;
+      }
+      .contact-card ul {
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+      }
+      .contact-main {
+        display: inline-block;
+        margin-top: 1rem;
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+        letter-spacing: -0.02em;
+        color: var(--ink);
+        text-decoration: none;
+      }
+      .contact-card a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+      }
+      .contact-card .link-underline {
+        color: var(--ink);
+      }
+      .contact-note {
+        font-size: 0.875rem;
+      }
     </style>
-    <!-- Meta Pixel Code -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1786407069063456');
-    fbq('track', 'PageView');
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1786407069063456&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- End Meta Pixel Code -->
   </head>
   <body>
-    <header class="header">
+<header class="header">
       <div class="container header-inner">
         <a href="index.html" class="logo" aria-label="Studio GH"
           >Studio<span class="text-accent"> GH</span></a
@@ -93,119 +117,57 @@
         </nav>
       </div>
     </header>
-
     <main>
-      <!-- ═══════════════ HERO -->
       <section class="container page-hero">
-        <div class="reveal"><p class="eyebrow">Pro kosmetičky</p></div>
-        <h1 class="reveal" data-delay="80">Školení DIBI Milano</h1>
-        <p class="lead reveal" data-delay="160">Jsem ambasadorka a trenérka značky DIBI Milano pro Českou republiku.</p>
+        <div class="reveal"><p class="eyebrow">Studio GH</p></div>
+        <h1 class="reveal" data-delay="80">Kontakt</h1>
+        <p class="lead reveal" data-delay="160">Ozvěte se telefonicky, e-mailem nebo přes sociální sítě — anebo se rovnou objednejte online.</p>
       </section>
 
-      <!-- ═══════════════ PROČ DIBI -->
-      <section class="border-y bg-paper">
-        <div class="container section">
-          <div class="grid col-12">
-            <div class="reveal span-5">
-              <div class="photo-frame tall rounded">
-                <img src="static/index/dibi.jpg" alt="DIBI Milano — Studio GH" loading="lazy" />
-              </div>
-            </div>
-            <div class="span-6-7 col-center">
-              <p class="eyebrow reveal">Proč DIBI Milano</p>
-              <h2 class="h2 reveal" data-delay="80">Krása není náhoda, je to metoda</h2>
-              <p class="lead mt-6 reveal" data-delay="160">
-                DIBI Milano stojí na jednoduché myšlence: krása není náhoda, je to metoda. Analýza,
-                diagnostika, personalizovaný projekt péče pro každou klientku. Žádné zázraky — jen
-                skutečné, měřitelné výsledky.
-              </p>
-              <p class="lead mt-6 reveal" data-delay="240">
-                Přesně proto s touhle značkou pracuji. A přesně proto ji školím.
-              </p>
-            </div>
+      <section class="container" style="padding-bottom:4rem">
+        <div class="contact-grid">
+          <div class="contact-card reveal">
+            <p class="eyebrow">Telefon</p>
+            <a class="contact-main" href="tel:605134301">605 134 301</a>
+            <p class="contact-note">Když zrovna ošetřuji, nemohu telefon zvednout — napište mi SMS a ozvu se zpět.</p>
+          </div>
+
+          <div class="contact-card reveal" data-delay="70">
+            <p class="eyebrow">E-mail</p>
+            <a class="contact-main" href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a>
+            <p class="contact-note">Pro běžnou komunikaci, dotazy i případné reklamace.</p>
+          </div>
+
+          <div class="contact-card reveal" data-delay="140">
+            <p class="eyebrow">Sociální sítě</p>
+            <ul>
+              <li><a class="link-underline" href="https://www.instagram.com/gabrielahribova_skintherapist" target="_blank" rel="noreferrer">Instagram — @gabrielahribova_skintherapist</a></li>
+              <li><a class="link-underline" href="https://www.facebook.com/kosmetickestudioGabrielyHribove" target="_blank" rel="noreferrer">Facebook — Kosmetické studio Gabriely Hřibové</a></li>
+              <li><a class="link-underline" href="https://www.facebook.com/gabriela.hribova.3#" target="_blank" rel="noreferrer">Messenger</a></li>
+            </ul>
+          </div>
+
+          <div class="contact-card reveal" data-delay="210">
+            <p class="eyebrow">Provozovna</p>
+            <h2>Komenského 358<br />671 68 Šanov</h2>
+            <p class="contact-note">Šanov u Znojma — dostupné z Hrušovan nad Jevišovkou, Hevlína, Drnholce, Mikulova, Pohořelic, Miroslavi i Znojma.</p>
+            <a class="link-underline" href="https://www.google.com/maps/search/?api=1&amp;query=Komensk%C3%A9ho+358%2C+671+68+%C5%A0anov" target="_blank" rel="noreferrer">Otevřít v mapách →</a>
           </div>
         </div>
       </section>
 
-      <!-- ═══════════════ CO ŠKOLÍM -->
-      <section class="container section">
-        <div class="grid col-12">
-          <div class="span-4">
-            <div class="reveal">
-              <p class="eyebrow">Co školím</p>
-              <h2 class="h2">Neškolím jen produkty</h2>
-            </div>
-          </div>
-          <div class="span-7-6 col-center stack">
-            <p class="reveal lead">
-              Produktový katalog si přečtete sama. Školím to, co z kosmetičky dělá odbornici:
-              diagnostiku, čtení aktuálního stavu pleti, výběr protokolu podle toho, co pleť právě
-              teď unese — ne podle toho, co je nové v nabídce.
-            </p>
-            <p class="reveal lead" data-delay="100">
-              Cílem DIBI Milano je kosmetička jako kompetentní a kritická konzultantka. To je i můj
-              cíl. Kritická znamená, že víte nejen kdy produkt použít, ale i kdy ne.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ POSLEDNÍ HRANICE -->
-      <section class="border-y bg-paper">
-        <div class="container section">
-          <div class="grid col-12">
-            <div class="span-4">
-              <div class="reveal">
-                <p class="eyebrow">Závazek</p>
-                <h2 class="h2">Poslední hranice před estetickou medicínou</h2>
-              </div>
-            </div>
-            <div class="span-7-6 col-center stack">
-              <p class="reveal lead">
-                DIBI Milano se pozicuje jako poslední hranice před estetickou medicínou. To je
-                závazek. Znamená to pracovat s biostimulací, s technologiemi a s vysoce
-                koncentrovanými protokoly — a to bez porozumění pleti nejde.
-              </p>
-              <p class="reveal lead" data-delay="100">
-                S porozuměním je to nástroj, který vaše klientky ocení a vaši práci posune.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ JAK ŠKOLENÍ PROBÍHÁ -->
-      <section class="container section">
-        <div class="grid col-12">
-          <div class="span-4">
-            <div class="reveal">
-              <p class="eyebrow">Jak to probíhá</p>
-              <h2 class="h2">Individuálně nebo v malé skupině</h2>
-            </div>
-          </div>
-          <div class="span-7-6 col-center stack">
-            <p class="reveal lead">
-              Pokud se značkou DIBI Milano pracujete, nebo o ní uvažujete, můžete se ke mně objednat
-              na školení. Individuálně nebo v malé skupině, u mě ve Studiu GH v Šanově u Znojma.
-            </p>
-            <p class="closing reveal" data-delay="100">
-              Pro termín a podrobnosti mě kontaktujte.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <!-- ═══════════════ ZÁVĚREČNÉ CTA -->
-      <section class="container final">
-        <h2 class="reveal">Domluvme si termín školení.</h2>
-        <div class="reveal" data-delay="120" style="margin-top: 2.25rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap">
-          <a class="btn" href="tel:605134301">605 134 301 <span aria-hidden="true">→</span></a>
-          <a class="btn btn-ghost" href="mailto:hribova.g@seznam.cz">hribova.g@seznam.cz</a>
+      <section class="container" style="padding-bottom:6rem">
+        <div class="reveal" style="border:1px solid var(--sand);border-radius:2px;padding:2.5rem;background:var(--paper)">
+          <p class="eyebrow">Fakturační údaje</p>
+          <p style="color:var(--smoke);line-height:1.8;margin-top:1rem">
+            Gabriela Hřibová · IČO: 71832173<br />
+            Sídlo: Hevlín 271, 671 69 Hevlín<br />
+            Zapsaná v Živnostenském rejstříku. Nejsem plátce DPH.
+          </p>
         </div>
       </section>
     </main>
-
-    <footer class="footer">
+<footer class="footer">
       <div class="container" style="padding-block: 5rem">
         <div class="footer-cta">
           <p class="eyebrow footer-muted">Rezervace</p>
